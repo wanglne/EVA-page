@@ -1,0 +1,366 @@
+---
+import results from "../data/results.json";
+
+type Family = "llm" | "vlm";
+type Category = "safety" | "utility";
+const families: Family[] = ["llm", "vlm"];
+const categories: { id: Category; name: string }[] = [
+  { id: "safety", name: "Jailbreak robustness" },
+  { id: "utility", name: "Utility preservation" },
+];
+const benchmarks = [
+  "HarmBench",
+  "AdvBench",
+  "JailbreakBench",
+  "MaliciousInstruct",
+];
+const availability = Object.fromEntries(
+  categories.map(({ id }) => [
+    id,
+    Object.fromEntries(
+      families.map((family) => [family, Object.keys(results[id][family])]),
+    ),
+  ]),
+);
+
+const definitions = {
+  safety: {
+    llm: {
+      source: "Table 1",
+      note: "Attack success rate (%), lower is better. GCG, AutoDAN, and PAIR are evaluated on each of the four benchmarks. Harmfulness is judged using the HarmBench classifier.",
+      tables: [
+        {
+          title: "Textual jailbreaks · ASR ↓",
+          start: 0,
+          end: 12,
+          groups: benchmarks.map((name) => ({
+            name,
+            metrics: ["GCG", "AutoDAN", "PAIR"],
+          })),
+        },
+      ],
+    },
+    vlm: {
+      source: "Table 3",
+      note: "Attack success rate (%), lower is better. ADV-16 images are generated on LLaVA-1.5-7B and transferred to the other VLMs. EVA (text) is the text-only editing variant.",
+      tables: [
+        {
+          title: "Visual jailbreaks · ASR ↓",
+          start: 0,
+          end: 12,
+          groups: benchmarks.map((name) => ({
+            name,
+            metrics: ["FigStep", "ADV-16", "Hades"],
+          })),
+        },
+        {
+          title: "Multimodal safety benchmarks · ASR ↓",
+          start: 12,
+          end: 18,
+          groups: [
+            { name: "MM-SafetyBench", metrics: ["SD", "TYPO", "SD + TYPO"] },
+            {
+              name: "MultiTrust",
+              metrics: ["Typographic", "Multimodal", "Cross-modal"],
+            },
+          ],
+        },
+      ],
+    },
+  },
+  utility: {
+    llm: {
+      source: "Table 2",
+      note: "Higher scores indicate better utility. Task scores follow the paper's original scales. ↑ marks improvements over the vanilla model reported in the paper.",
+      tables: [
+        {
+          title: "General language capabilities ↑",
+          start: 0,
+          end: 8,
+          groups: [
+            { name: "MT-Bench", metrics: ["Score"] },
+            { name: "BoolQ", metrics: ["QA"] },
+            { name: "MuTual", metrics: ["Dialogue"] },
+            { name: "CoNLL03", metrics: ["NER"] },
+            { name: "RTE", metrics: ["NLI"] },
+            { name: "GSM8K", metrics: ["Reasoning"] },
+            { name: "SST2", metrics: ["Sentiment"] },
+            { name: "SAMSum", metrics: ["Summary"] },
+          ],
+        },
+      ],
+    },
+    vlm: {
+      source: "Table 5",
+      note: "Higher scores indicate better utility. MM-Vet-v2, MMMU, and MMStar evaluate general multimodal capabilities alongside the safety results.",
+      tables: [
+        {
+          title: "General multimodal capabilities ↑",
+          start: 0,
+          end: 3,
+          groups: ["MM-Vet-v2", "MMMU", "MMStar"].map((name) => ({
+            name,
+            metrics: ["Score"],
+          })),
+        },
+      ],
+    },
+  },
+};
+---
+
+<div
+  class="results-explorer not-prose"
+  data-results
+  data-models={JSON.stringify(results.models)}
+  data-availability={JSON.stringify(availability)}
+>
+  <div class="results-toolbar">
+    <span class="eyebrow">Compare model performance</span>
+    <div class="results-controls">
+      <label for="model-family"
+        >Family <select id="model-family"
+          ><option value="vlm">VLMs</option><option value="llm">LLMs</option
+          ></select
+        ></label
+      >
+      <label for="model-name"
+        >Model <select id="model-name"
+          >{
+            results.models.vlm.map((model) => (
+              <option value={model.id} selected={model.id === "qwen-vl"}>
+                {model.name}
+              </option>
+            ))
+          }</select
+        ></label
+      >
+    </div>
+  </div>
+  <div class="result-tabs" role="tablist" aria-label="Evaluation category">
+    {
+      categories.map((category, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`tab-${category.id}`}
+          aria-controls={`panel-${category.id}`}
+          aria-selected={index === 0 ? "true" : "false"}
+          tabindex={index === 0 ? 0 : -1}
+          data-category={category.id}
+        >
+          {category.name}
+        </button>
+      ))
+    }
+  </div>
+  {
+    categories.map((category, categoryIndex) => (
+      <section
+        role="tabpanel"
+        id={`panel-${category.id}`}
+        aria-labelledby={`tab-${category.id}`}
+        hidden={categoryIndex !== 0}
+        tabindex="0"
+      >
+        {families.map((family) => (
+          <div data-family={family} hidden={family !== "vlm"}>
+            {Object.entries(results[category.id][family]).map(
+              ([modelId, rows]) => (
+                <div data-model={modelId} hidden={modelId !== "qwen-vl"}>
+                  {definitions[category.id][family].tables.map((table) => (
+                    <>
+                      <div class="table-heading">
+                        <h3>{table.title}</h3>
+                        <span>{definitions[category.id][family].source}</span>
+                      </div>
+                      <div
+                        class="table-scroll"
+                        tabindex="0"
+                        role="region"
+                        aria-label={`${results.models[family].find((model) => model.id === modelId)?.name}: ${table.title}`}
+                      >
+                        <table
+                          class:list={{
+                            "result-dense-table": table.end - table.start > 10,
+                          }}
+                        >
+                          <caption class="sr-only">
+                            {table.title}.{" "}
+                            {definitions[category.id][family].source}.
+                          </caption>
+                          <colgroup>
+                            <col class="result-method-column" />
+                          </colgroup>
+                          {table.groups.map((group) => (
+                            <colgroup span={group.metrics.length} />
+                          ))}
+                          <thead>
+                            <tr>
+                              <th
+                                scope="col"
+                                rowspan="2"
+                                class="result-method-cell"
+                              >
+                                Method
+                              </th>
+                              {table.groups.map((group) => (
+                                <th
+                                  scope="colgroup"
+                                  colspan={group.metrics.length}
+                                >
+                                  {group.name}
+                                </th>
+                              ))}
+                            </tr>
+                            <tr>
+                              {table.groups.flatMap((group) =>
+                                group.metrics.map((metric) => (
+                                  <th scope="col">{metric}</th>
+                                )),
+                              )}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {rows.map((row) => (
+                              <tr
+                                class:list={{
+                                  "eva-row":
+                                    row.method === "EVA" ||
+                                    (family === "llm" &&
+                                      row.method === "EVA (text)"),
+                                }}
+                              >
+                                <th scope="row" class="result-method-cell">
+                                  {row.method}
+                                  {(row.method === "EVA" ||
+                                    (family === "llm" &&
+                                      row.method === "EVA (text)")) && (
+                                    <span class="ours">(Ours)</span>
+                                  )}
+                                </th>
+                                {row.values
+                                  .slice(table.start, table.end)
+                                  .map((cell) => (
+                                    <td>
+                                      <span
+                                        class:list={{
+                                          "best-value": cell.best,
+                                        }}
+                                      >
+                                        {cell.value}
+                                      </span>
+                                      {cell.improved && (
+                                        <span
+                                          class="utility-improvement"
+                                          aria-label="Improvement over vanilla"
+                                        >
+                                          ↑
+                                        </span>
+                                      )}
+                                    </td>
+                                  ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>
+                  ))}
+                </div>
+              ),
+            )}
+            <p class="table-note">{definitions[category.id][family].note}</p>
+          </div>
+        ))}
+      </section>
+    ))
+  }
+  <noscript
+    ><p class="table-note">
+      The tables above show Qwen2.5-VL-7B. All results are available in the <a
+        href="https://arxiv.org/pdf/2605.14750"
+        target="_blank"
+        rel="noopener noreferrer">paper</a
+      >.
+    </p></noscript
+  >
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-results]").forEach((root) => {
+    type Family = "llm" | "vlm";
+    type Category = "safety" | "utility";
+    const catalog: Record<Family, { id: string; name: string }[]> = JSON.parse(
+      root.dataset.models!,
+    );
+    const availability: Record<Category, Record<Family, string[]>> = JSON.parse(
+      root.dataset.availability!,
+    );
+    const familySelect =
+      root.querySelector<HTMLSelectElement>("#model-family")!;
+    const modelSelect = root.querySelector<HTMLSelectElement>("#model-name")!;
+    const tabs = Array.from(
+      root.querySelectorAll<HTMLButtonElement>('[role="tab"]'),
+    );
+    let category: Category = "safety";
+
+    const render = () => {
+      const family = familySelect.value as Family;
+      const previousModel = modelSelect.value;
+      const models = catalog[family].filter((model) =>
+        availability[category][family].includes(model.id),
+      );
+      modelSelect.replaceChildren(
+        ...models.map((model) => new Option(model.name, model.id)),
+      );
+      modelSelect.value = models.some((model) => model.id === previousModel)
+        ? previousModel
+        : models[0].id;
+      tabs.forEach((tab) => {
+        const selected = tab.dataset.category === category;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+        root.querySelector<HTMLElement>(
+          `#${tab.getAttribute("aria-controls")}`,
+        )!.hidden = !selected;
+      });
+      root
+        .querySelectorAll<HTMLElement>("[data-family]")
+        .forEach((container) => {
+          container.hidden = container.dataset.family !== family;
+          container
+            .querySelectorAll<HTMLElement>("[data-model]")
+            .forEach((table) => {
+              table.hidden = table.dataset.model !== modelSelect.value;
+            });
+        });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener("click", () => {
+        category = tab.dataset.category as Category;
+        render();
+      });
+      tab.addEventListener("keydown", (event) => {
+        const offset =
+          event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+        const next =
+          event.key === "Home"
+            ? tabs[0]
+            : event.key === "End"
+              ? tabs[tabs.length - 1]
+              : offset
+                ? tabs[(index + offset + tabs.length) % tabs.length]
+                : null;
+        if (next) {
+          event.preventDefault();
+          next.click();
+          next.focus();
+        }
+      });
+    });
+    familySelect.addEventListener("change", render);
+    modelSelect.addEventListener("change", render);
+    render();
+  });
+</script>

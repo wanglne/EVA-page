@@ -1,0 +1,269 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const efficiency = [
+  {
+    model: "Vicuna-7B-v1.5",
+    rows: [
+      ["LoRA", "1.5 hr", "1×", "23.2%"],
+      ["SafeDecoding", "0.6 hr", "1.07×", "10.7%"],
+      ["LED", "6.2 hr", "1×", "8.8%"],
+      ["Circuit Breakers", "1.0 hr", "1×", "7.3%"],
+      ["EVA (text)", "0.4 hr", "1×", "6.7%"],
+    ],
+  },
+  {
+    model: "InternVL3.5-8B",
+    rows: [
+      ["JailGuard", "—", "8×", "13.1%"],
+      ["AdaShield-A", "1.2 hr", "1.05×", "3.0%"],
+      ["VLGuard", "2.0 hr", "1×", "1.8%"],
+      ["EVA", "0.8 hr", "1×", "0.9%"],
+    ],
+  },
+];
+const selection = [
+  ["Vanilla", "51%", "56.9"],
+  ["Random", "0%", "10.4"],
+  ["Fixed", "0%", "12.1"],
+  ["L2 distance", "8%", "54.4"],
+  ["Cosine similarity", "5%", "55.2"],
+  ["Gradient-based", "2%", "56.0"],
+  ["Attention-based (EVA)", "0%", "55.5"],
+];
+const variants = [
+  ["Vanilla", "11%", "40%", "51%", "14%", "48%", "48%"],
+  ["EVA", "1%", "0%", "0%", "3%", "6%", "3%"],
+  ["EVA (Image-Focused)", "1%", "15%", "12%", "6%", "17%", "7%"],
+  ["EVA (Image-Only)", "0%", "18%", "13%", "3%", "36%", "16%"],
+  ["EVA (TYPO-Focused)", "5%", "0%", "25%", "10%", "4%", "27%"],
+  ["EVA (TYPO-Only)", "10%", "0%", "40%", "13%", "2%", "39%"],
+];
+const isBest = (
+  rows: string[][],
+  column: number,
+  value: string,
+  higherIsBetter = false,
+) => {
+  const number = Number.parseFloat(value);
+  if (column === 0 || !Number.isFinite(number)) return false;
+  const values = rows
+    .map((row) => Number.parseFloat(row[column]))
+    .filter(Number.isFinite);
+  return (
+    number === (higherIsBetter ? Math.max(...values) : Math.min(...values))
+  );
+};
+---
+
+<details id="efficiency" class="evidence-details breakout not-prose">
+  <summary>Editing efficiency <span>Table 9</span></summary>
+  <div class="details-body">
+    <p>
+      EVA uses 0.4 hours for the text-only model and 0.8 hours for the
+      multimodal model, with a reported inference overhead of 1× in both
+      settings.
+    </p>
+    <div
+      class="table-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="Editing efficiency results; scroll horizontally for all columns"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th scope="col">Model</th><th scope="col">Method</th><th
+              scope="col">Training time ↓</th
+            ><th scope="col">Inference overhead ↓</th><th scope="col"
+              >Average ASR ↓</th
+            ></tr
+          ></thead
+        >
+        {
+          efficiency.map((group) => (
+            <tbody>
+              {group.rows.map((row, index) => (
+                <tr>
+                  {index === 0 && (
+                    <th scope="rowgroup" rowspan={group.rows.length}>
+                      {group.model}
+                    </th>
+                  )}
+                  {row.map((cell, column) => (
+                    <td class:list={{ "eva-value": row[0].startsWith("EVA") }}>
+                      <span
+                        class:list={{
+                          "best-value": isBest(group.rows, column, cell),
+                        }}
+                      >
+                        {cell}
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          ))
+        }
+      </table>
+    </div>
+    <p class="table-note">
+      Single NVIDIA A40 GPU; results averaged over five runs. Values are
+      reported in Table 9. A dash indicates no training time is reported.
+    </p>
+  </div>
+</details>
+
+<details class="evidence-details breakout not-prose">
+  <summary
+    >Visual grounding and critical layers <span>Table 4 · Figures 3–4</span
+    ></summary
+  >
+  <div class="details-body">
+    <p>
+      Choosing the right visual token matters for both safety and utility.
+      Attention-based selection reaches 0% ASR on the SD + TYPO subset while
+      retaining an MM-Vet-v2 score of 55.5. Random and fixed selection also
+      suppress attacks, but reduce utility to 10.4 and 12.1.
+    </p>
+    <div
+      class="table-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="Visual token selection results; scroll horizontally for all columns"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th scope="col">Selection method</th><th scope="col"
+              >MM-SafetyBench ASR ↓</th
+            ><th scope="col">MM-Vet-v2 score ↑</th></tr
+          ></thead
+        >
+        <tbody
+          >{
+            selection.map((row) => (
+              <tr
+                class:list={{ "eva-row": row[0] === "Attention-based (EVA)" }}
+              >
+                {row.map((cell, index) =>
+                  index === 0 ? (
+                    <th scope="row">{cell}</th>
+                  ) : (
+                    <td>
+                      <span
+                        class:list={{
+                          "best-value": isBest(
+                            selection,
+                            index,
+                            cell,
+                            index === 2,
+                          ),
+                        }}
+                      >
+                        {cell}
+                      </span>
+                    </td>
+                  ),
+                )}
+              </tr>
+            ))
+          }</tbody
+        >
+      </table>
+    </div>
+    <p class="table-note">
+      Qwen2.5-VL-7B, MM-SafetyBench SD + TYPO subset. Values are reported in
+      Table 4.
+    </p>
+    <div class="ablation-figures">
+      <figure>
+        <img
+          src={`${base}/figures/eva-qwen-layer.svg`}
+          alt="Qwen2.5-VL layer ablation comparing average attack success and MM-Vet-v2 utility; layer 8 offers the selected trade-off."
+          loading="lazy"
+        /><figcaption>Qwen2.5-VL-7B · selected critical layer: 8</figcaption>
+      </figure>
+      <figure>
+        <img
+          src={`${base}/figures/eva-internvl-layer.svg`}
+          alt="InternVL3.5 layer ablation comparing average attack success and MM-Vet-v2 utility; layer 9 offers the selected trade-off."
+          loading="lazy"
+        /><figcaption>InternVL3.5-8B · selected critical layer: 9</figcaption>
+      </figure>
+    </div>
+  </div>
+</details>
+
+<details class="evidence-details breakout not-prose">
+  <summary
+    >Visual semantics and text in images <span>Figure 8 · Table 8</span
+    ></summary
+  >
+  <div class="details-body">
+    <p>
+      Harmful information can appear in visual content, rendered text, or their
+      combination. Allowing EVA to select relevant tokens from both regions
+      provides a stronger balance across these input types than restricting the
+      edit to one region.
+    </p>
+    <figure class="supplementary-figure">
+      <img
+        src={`${base}/figures/eva-visual-editing.svg`}
+        alt="EVA visual editing variants: full composite image, image-focused, image-only, text-focused, and text-only input. Red boxes mark the permitted token-selection regions."
+        loading="lazy"
+      /><figcaption>
+        Red boxes indicate the regions available for visual token selection.
+      </figcaption>
+    </figure>
+    <div
+      class="table-scroll"
+      tabindex="0"
+      role="region"
+      aria-label="Visual editing variants; scroll horizontally for all columns"
+    >
+      <table>
+        <thead
+          ><tr
+            ><th scope="col" rowspan="2">Method</th><th
+              scope="colgroup"
+              colspan="3">Qwen2.5-VL-7B</th
+            ><th scope="colgroup" colspan="3">InternVL3.5-8B</th></tr
+          ><tr
+            >{
+              ["SD", "TYPO", "SD + TYPO", "SD", "TYPO", "SD + TYPO"].map(
+                (name) => <th scope="col">{name}</th>,
+              )
+            }</tr
+          ></thead
+        >
+        <tbody
+          >{
+            variants.map((row) => (
+              <tr class:list={{ "eva-row": row[0] === "EVA" }}>
+                {row.map((cell, index) =>
+                  index === 0 ? (
+                    <th scope="row">{cell}</th>
+                  ) : (
+                    <td>
+                      <span
+                        class:list={{
+                          "best-value": isBest(variants, index, cell),
+                        }}
+                      >
+                        {cell}
+                      </span>
+                    </td>
+                  ),
+                )}
+              </tr>
+            ))
+          }</tbody
+        >
+      </table>
+    </div>
+    <p class="table-note">
+      MM-SafetyBench ASR, lower is better. Values are reported in Table 8.
+    </p>
+  </div>
+</details>

@@ -1,0 +1,6432 @@
+{
+  "models": {
+    "llm": [
+      {
+        "id": "vicuna",
+        "name": "Vicuna-7B-v1.5"
+      },
+      {
+        "id": "llama2",
+        "name": "LLaMA 2-7B-Chat"
+      },
+      {
+        "id": "mistral",
+        "name": "Mistral-7B-Instruct-v0.2"
+      },
+      {
+        "id": "llama3",
+        "name": "LLaMA 3.1-8B-Instruct"
+      },
+      {
+        "id": "qwen",
+        "name": "Qwen2.5-7B-Instruct"
+      }
+    ],
+    "vlm": [
+      {
+        "id": "llava",
+        "name": "LLaVA-1.5-7B"
+      },
+      {
+        "id": "qwen-vl",
+        "name": "Qwen2.5-VL-7B"
+      },
+      {
+        "id": "internvl",
+        "name": "InternVL3.5-8B"
+      }
+    ]
+  },
+  "safety": {
+    "llm": {
+      "vicuna": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "92%",
+              "raw": "0.92",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "69%",
+              "raw": "0.69",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "89%",
+              "raw": "0.89",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "78%",
+              "raw": "0.78",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "75%",
+              "raw": "0.75",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "89%",
+              "raw": "0.89",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "73%",
+              "raw": "0.73",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "77%",
+              "raw": "0.77",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "94%",
+              "raw": "0.94",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "83%",
+              "raw": "0.83",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "86%",
+              "raw": "0.86",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "40%",
+              "raw": "0.40",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "29%",
+              "raw": "0.29",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "20%",
+              "raw": "0.20",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "20%",
+              "raw": "0.20",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "34%",
+              "raw": "0.34",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "llama2": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "23%",
+              "raw": "0.23",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39%",
+              "raw": "0.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "46%",
+              "raw": "0.46",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "27%",
+              "raw": "0.27",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "45%",
+              "raw": "0.45",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "50%",
+              "raw": "0.50",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "mistral": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "87%",
+              "raw": "0.87",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "88%",
+              "raw": "0.88",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "56%",
+              "raw": "0.56",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "97%",
+              "raw": "0.97",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "82%",
+              "raw": "0.82",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "79%",
+              "raw": "0.79",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "95%",
+              "raw": "0.95",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "89%",
+              "raw": "0.89",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "94%",
+              "raw": "0.94",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "96%",
+              "raw": "0.96",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "92%",
+              "raw": "0.92",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "35%",
+              "raw": "0.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "55%",
+              "raw": "0.55",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "60%",
+              "raw": "0.60",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "25%",
+              "raw": "0.25",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "38%",
+              "raw": "0.38",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "62%",
+              "raw": "0.62",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "34%",
+              "raw": "0.34",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "40%",
+              "raw": "0.40",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "55%",
+              "raw": "0.55",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "44%",
+              "raw": "0.44",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "20%",
+              "raw": "0.20",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "24%",
+              "raw": "0.24",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "20%",
+              "raw": "0.20",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "25%",
+              "raw": "0.25",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "llama3": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "56%",
+              "raw": "0.56",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "20%",
+              "raw": "0.20",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "47%",
+              "raw": "0.47",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "31%",
+              "raw": "0.31",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "46%",
+              "raw": "0.46",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "31%",
+              "raw": "0.31",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "69%",
+              "raw": "0.69",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "46%",
+              "raw": "0.46",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "41%",
+              "raw": "0.41",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "27%",
+              "raw": "0.27",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "34%",
+              "raw": "0.34",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "33%",
+              "raw": "0.33",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "37%",
+              "raw": "0.37",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "35%",
+              "raw": "0.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "47%",
+              "raw": "0.47",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "qwen": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "49%",
+              "raw": "0.49",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "74%",
+              "raw": "0.74",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "66%",
+              "raw": "0.66",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "46%",
+              "raw": "0.46",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39%",
+              "raw": "0.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "55%",
+              "raw": "0.55",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "96%",
+              "raw": "0.96",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "54%",
+              "raw": "0.54",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "21%",
+              "raw": "0.21",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "65%",
+              "raw": "0.65",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "38%",
+              "raw": "0.38",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "82%",
+              "raw": "0.82",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "36%",
+              "raw": "0.36",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "50%",
+              "raw": "0.50",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "72%",
+              "raw": "0.72",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "90%",
+              "raw": "0.90",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "44%",
+              "raw": "0.44",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "77%",
+              "raw": "0.77",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "56%",
+              "raw": "0.56",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "80%",
+              "raw": "0.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "73%",
+              "raw": "0.73",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "43%",
+              "raw": "0.43",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "48%",
+              "raw": "0.48",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "97%",
+              "raw": "0.97",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "45%",
+              "raw": "0.45",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ]
+    },
+    "vlm": {
+      "llava": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "33%",
+              "raw": "0.33",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "71%",
+              "raw": "0.71",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "38%",
+              "raw": "0.38",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "43%",
+              "raw": "0.43",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39%",
+              "raw": "0.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "44%",
+              "raw": "0.44",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39%",
+              "raw": "0.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "61%",
+              "raw": "0.61",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "54%",
+              "raw": "0.54",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "68%",
+              "raw": "0.68",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "83%",
+              "raw": "0.83",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "37%",
+              "raw": "0.37",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "53%",
+              "raw": "0.53",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "88%",
+              "raw": "0.88",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "25%",
+              "raw": "0.25",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "56%",
+              "raw": "0.56",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "31%",
+              "raw": "0.31",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "47%",
+              "raw": "0.47",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "35%",
+              "raw": "0.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "55%",
+              "raw": "0.55",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "62%",
+              "raw": "0.62",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "29%",
+              "raw": "0.29",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39%",
+              "raw": "0.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "21%",
+              "raw": "0.21",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "33%",
+              "raw": "0.33",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "42%",
+              "raw": "0.42",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "qwen-vl": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "32%",
+              "raw": "0.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "18%",
+              "raw": "0.18",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "56%",
+              "raw": "0.56",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "47%",
+              "raw": "0.47",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "40%",
+              "raw": "0.40",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "51%",
+              "raw": "0.51",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "35%",
+              "raw": "0.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "26%",
+              "raw": "0.26",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "29%",
+              "raw": "0.29",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "37%",
+              "raw": "0.37",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "25%",
+              "raw": "0.25",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "31%",
+              "raw": "0.31",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "27%",
+              "raw": "0.27",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "27%",
+              "raw": "0.27",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19%",
+              "raw": "0.19",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "internvl": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "17%",
+              "raw": "0.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "30%",
+              "raw": "0.30",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "21%",
+              "raw": "0.21",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "48%",
+              "raw": "0.48",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "48%",
+              "raw": "0.48",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "33%",
+              "raw": "0.33",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "13%",
+              "raw": "0.13",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "22%",
+              "raw": "0.22",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "16%",
+              "raw": "0.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "10%",
+              "raw": "0.10",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "36%",
+              "raw": "0.36",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "35%",
+              "raw": "0.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "24%",
+              "raw": "0.24",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "7%",
+              "raw": "0.07",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "12%",
+              "raw": "0.12",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "8%",
+              "raw": "0.08",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "11%",
+              "raw": "0.11",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "4%",
+              "raw": "0.04",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "5%",
+              "raw": "0.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "14%",
+              "raw": "0.14",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "9%",
+              "raw": "0.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "15%",
+              "raw": "0.15",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "1%",
+              "raw": "0.01",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "2%",
+              "raw": "0.02",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "6%",
+              "raw": "0.06",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "3%",
+              "raw": "0.03",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0%",
+              "raw": "0.00",
+              "best": true,
+              "improved": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "utility": {
+    "llm": {
+      "vicuna": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "6.77",
+              "raw": "6.77",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.777",
+              "raw": "0.777",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.483",
+              "raw": "0.483",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.287",
+              "raw": "0.287",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.563",
+              "raw": "0.563",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.982",
+              "raw": "0.982",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.862",
+              "raw": "0.862",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.272",
+              "raw": "0.272",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "5.64",
+              "raw": "5.64",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.742",
+              "raw": "0.742",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.459",
+              "raw": "0.459",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.177",
+              "raw": "0.177",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.610",
+              "raw": "0.610",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.976",
+              "raw": "0.976",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.898",
+              "raw": "0.898",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.268",
+              "raw": "0.268",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "6.61",
+              "raw": "6.61",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.671",
+              "raw": "0.671",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.314",
+              "raw": "0.314",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.098",
+              "raw": "0.098",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.536",
+              "raw": "0.536",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.969",
+              "raw": "0.969",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.645",
+              "raw": "0.645",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.174",
+              "raw": "0.174",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "3.70",
+              "raw": "3.70",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.760",
+              "raw": "0.760",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.478",
+              "raw": "0.478",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.265",
+              "raw": "0.265",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.558",
+              "raw": "0.558",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.974",
+              "raw": "0.974",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.831",
+              "raw": "0.831",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.267",
+              "raw": "0.267",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "5.25",
+              "raw": "5.25",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.756",
+              "raw": "0.756",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.463",
+              "raw": "0.463",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.249",
+              "raw": "0.249",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.547",
+              "raw": "0.547",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.972",
+              "raw": "0.972",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.790",
+              "raw": "0.790",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.262",
+              "raw": "0.262",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "6.84",
+              "raw": "6.84",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.762",
+              "raw": "0.762",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.470",
+              "raw": "0.470",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.560",
+              "raw": "0.560",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.981",
+              "raw": "0.981",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.854",
+              "raw": "0.854",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.260",
+              "raw": "0.260",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "llama2": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "6.89",
+              "raw": "6.89",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.734",
+              "raw": "0.734",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.465",
+              "raw": "0.465",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.187",
+              "raw": "0.187",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.603",
+              "raw": "0.603",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.977",
+              "raw": "0.977",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.909",
+              "raw": "0.909",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.267",
+              "raw": "0.267",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "6.90",
+              "raw": "6.90",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.769",
+              "raw": "0.769",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.480",
+              "raw": "0.480",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.288",
+              "raw": "0.288",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.551",
+              "raw": "0.551",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.976",
+              "raw": "0.976",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.854",
+              "raw": "0.854",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.259",
+              "raw": "0.259",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "6.17",
+              "raw": "6.17",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.688",
+              "raw": "0.688",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.327",
+              "raw": "0.327",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.099",
+              "raw": "0.099",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.518",
+              "raw": "0.518",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.976",
+              "raw": "0.976",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.872",
+              "raw": "0.872",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.227",
+              "raw": "0.227",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "5.80",
+              "raw": "5.80",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.705",
+              "raw": "0.705",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.425",
+              "raw": "0.425",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.228",
+              "raw": "0.228",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.577",
+              "raw": "0.577",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.973",
+              "raw": "0.973",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.898",
+              "raw": "0.898",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.256",
+              "raw": "0.256",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "6.05",
+              "raw": "6.05",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.712",
+              "raw": "0.712",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.444",
+              "raw": "0.444",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.185",
+              "raw": "0.185",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.559",
+              "raw": "0.559",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.971",
+              "raw": "0.971",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.881",
+              "raw": "0.881",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.260",
+              "raw": "0.260",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "6.31",
+              "raw": "6.31",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.718",
+              "raw": "0.718",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.462",
+              "raw": "0.462",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.228",
+              "raw": "0.228",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.612",
+              "raw": "0.612",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.974",
+              "raw": "0.974",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.905",
+              "raw": "0.905",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.251",
+              "raw": "0.251",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "mistral": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "7.93",
+              "raw": "7.93",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.852",
+              "raw": "0.852",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.664",
+              "raw": "0.664",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.498",
+              "raw": "0.498",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.694",
+              "raw": "0.694",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.941",
+              "raw": "0.941",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.962",
+              "raw": "0.962",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.255",
+              "raw": "0.255",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "7.54",
+              "raw": "7.54",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.850",
+              "raw": "0.850",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.668",
+              "raw": "0.668",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.495",
+              "raw": "0.495",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.700",
+              "raw": "0.700",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.946",
+              "raw": "0.946",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.953",
+              "raw": "0.953",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.258",
+              "raw": "0.258",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "7.16",
+              "raw": "7.16",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.732",
+              "raw": "0.732",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.439",
+              "raw": "0.439",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.372",
+              "raw": "0.372",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.593",
+              "raw": "0.593",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.863",
+              "raw": "0.863",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.790",
+              "raw": "0.790",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.204",
+              "raw": "0.204",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "7.09",
+              "raw": "7.09",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.803",
+              "raw": "0.803",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.662",
+              "raw": "0.662",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.431",
+              "raw": "0.431",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.679",
+              "raw": "0.679",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.937",
+              "raw": "0.937",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.918",
+              "raw": "0.918",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.221",
+              "raw": "0.221",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "5.98",
+              "raw": "5.98",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.811",
+              "raw": "0.811",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.669",
+              "raw": "0.669",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.440",
+              "raw": "0.440",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.685",
+              "raw": "0.685",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.943",
+              "raw": "0.943",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.871",
+              "raw": "0.871",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "7.35",
+              "raw": "7.35",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.814",
+              "raw": "0.814",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.614",
+              "raw": "0.614",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.444",
+              "raw": "0.444",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.669",
+              "raw": "0.669",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.955",
+              "raw": "0.955",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.923",
+              "raw": "0.923",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.205",
+              "raw": "0.205",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "llama3": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "7.79",
+              "raw": "7.79",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.770",
+              "raw": "0.770",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.737",
+              "raw": "0.737",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.424",
+              "raw": "0.424",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.674",
+              "raw": "0.674",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.983",
+              "raw": "0.983",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.922",
+              "raw": "0.922",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "8.14",
+              "raw": "8.14",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.782",
+              "raw": "0.782",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.737",
+              "raw": "0.737",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.433",
+              "raw": "0.433",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.672",
+              "raw": "0.672",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.982",
+              "raw": "0.982",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.918",
+              "raw": "0.918",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "8.05",
+              "raw": "8.05",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.746",
+              "raw": "0.746",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.340",
+              "raw": "0.340",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.223",
+              "raw": "0.223",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.572",
+              "raw": "0.572",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.969",
+              "raw": "0.969",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.617",
+              "raw": "0.617",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.136",
+              "raw": "0.136",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "7.29",
+              "raw": "7.29",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.768",
+              "raw": "0.768",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.684",
+              "raw": "0.684",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.468",
+              "raw": "0.468",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.597",
+              "raw": "0.597",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.981",
+              "raw": "0.981",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.863",
+              "raw": "0.863",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.251",
+              "raw": "0.251",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "7.21",
+              "raw": "7.21",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.489",
+              "raw": "0.489",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.660",
+              "raw": "0.660",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.390",
+              "raw": "0.390",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.643",
+              "raw": "0.643",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.977",
+              "raw": "0.977",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.862",
+              "raw": "0.862",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.252",
+              "raw": "0.252",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "7.44",
+              "raw": "7.44",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.752",
+              "raw": "0.752",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.744",
+              "raw": "0.744",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.423",
+              "raw": "0.423",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.686",
+              "raw": "0.686",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.985",
+              "raw": "0.985",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.890",
+              "raw": "0.890",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.256",
+              "raw": "0.256",
+              "best": true,
+              "improved": true
+            }
+          ]
+        }
+      ],
+      "qwen": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "8.82",
+              "raw": "8.82",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.840",
+              "raw": "0.840",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.790",
+              "raw": "0.790",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.510",
+              "raw": "0.510",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.835",
+              "raw": "0.835",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.987",
+              "raw": "0.987",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.928",
+              "raw": "0.928",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LoRA",
+          "values": [
+            {
+              "value": "8.39",
+              "raw": "8.39",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.840",
+              "raw": "0.840",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.790",
+              "raw": "0.790",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.507",
+              "raw": "0.507",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.833",
+              "raw": "0.833",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.988",
+              "raw": "0.988",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.925",
+              "raw": "0.925",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.258",
+              "raw": "0.258",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "SafeDecoding",
+          "values": [
+            {
+              "value": "8.32",
+              "raw": "8.32",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.838",
+              "raw": "0.838",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.802",
+              "raw": "0.802",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.509",
+              "raw": "0.509",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.831",
+              "raw": "0.831",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.987",
+              "raw": "0.987",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.870",
+              "raw": "0.870",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.239",
+              "raw": "0.239",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "LED",
+          "values": [
+            {
+              "value": "7.87",
+              "raw": "7.87",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.819",
+              "raw": "0.819",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.808",
+              "raw": "0.808",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.499",
+              "raw": "0.499",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.807",
+              "raw": "0.807",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.987",
+              "raw": "0.987",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.903",
+              "raw": "0.903",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "Circuit Breakers",
+          "values": [
+            {
+              "value": "7.91",
+              "raw": "7.91",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.797",
+              "raw": "0.797",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.788",
+              "raw": "0.788",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.504",
+              "raw": "0.504",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.813",
+              "raw": "0.813",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.987",
+              "raw": "0.987",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.896",
+              "raw": "0.896",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.254",
+              "raw": "0.254",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "8.48",
+              "raw": "8.48",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.832",
+              "raw": "0.832",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.798",
+              "raw": "0.798",
+              "best": false,
+              "improved": true
+            },
+            {
+              "value": "0.510",
+              "raw": "0.510",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "0.833",
+              "raw": "0.833",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.988",
+              "raw": "0.988",
+              "best": true,
+              "improved": true
+            },
+            {
+              "value": "0.910",
+              "raw": "0.910",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "0.256",
+              "raw": "0.256",
+              "best": false,
+              "improved": true
+            }
+          ]
+        }
+      ]
+    },
+    "vlm": {
+      "llava": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "28.5",
+              "raw": "28.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "31.3",
+              "raw": "31.3",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32.5",
+              "raw": "32.5",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "26.5",
+              "raw": "26.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "29.8",
+              "raw": "29.8",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "31.0",
+              "raw": "31.0",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "14.1",
+              "raw": "14.1",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19.7",
+              "raw": "19.7",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "19.2",
+              "raw": "19.2",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "28.1",
+              "raw": "28.1",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32.1",
+              "raw": "32.1",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "32.3",
+              "raw": "32.3",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "28.6",
+              "raw": "28.6",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "33.3",
+              "raw": "33.3",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "27.3",
+              "raw": "27.3",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "28.3",
+              "raw": "28.3",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "33.4",
+              "raw": "33.4",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "32.3",
+              "raw": "32.3",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "qwen-vl": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "56.9",
+              "raw": "56.9",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "49.9",
+              "raw": "49.9",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "60.1",
+              "raw": "60.1",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "54.5",
+              "raw": "54.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "47.5",
+              "raw": "47.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "59.2",
+              "raw": "59.2",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "33.2",
+              "raw": "33.2",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "35.4",
+              "raw": "35.4",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "39.8",
+              "raw": "39.8",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "46.6",
+              "raw": "46.6",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "50.2",
+              "raw": "50.2",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "61.6",
+              "raw": "61.6",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "55.7",
+              "raw": "55.7",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "49.6",
+              "raw": "49.6",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "61.1",
+              "raw": "61.1",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "55.5",
+              "raw": "55.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "48.2",
+              "raw": "48.2",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "60.9",
+              "raw": "60.9",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ],
+      "internvl": [
+        {
+          "method": "Vanilla",
+          "values": [
+            {
+              "value": "69.1",
+              "raw": "69.1",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "57.6",
+              "raw": "57.6",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "68.3",
+              "raw": "68.3",
+              "best": true,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "JailGuard",
+          "values": [
+            {
+              "value": "64.4",
+              "raw": "64.4",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "55.8",
+              "raw": "55.8",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "66.5",
+              "raw": "66.5",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "AdaShield-A",
+          "values": [
+            {
+              "value": "46.2",
+              "raw": "46.2",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "38.4",
+              "raw": "38.4",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "44.7",
+              "raw": "44.7",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "VLGuard",
+          "values": [
+            {
+              "value": "67.5",
+              "raw": "67.5",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "57.1",
+              "raw": "57.1",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "67.0",
+              "raw": "67.0",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA (text)",
+          "values": [
+            {
+              "value": "69.0",
+              "raw": "69.0",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "57.0",
+              "raw": "57.0",
+              "best": false,
+              "improved": false
+            },
+            {
+              "value": "67.6",
+              "raw": "67.6",
+              "best": false,
+              "improved": false
+            }
+          ]
+        },
+        {
+          "method": "EVA",
+          "values": [
+            {
+              "value": "69.3",
+              "raw": "69.3",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "57.6",
+              "raw": "57.6",
+              "best": true,
+              "improved": false
+            },
+            {
+              "value": "67.5",
+              "raw": "67.5",
+              "best": false,
+              "improved": false
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

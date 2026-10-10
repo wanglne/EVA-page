@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local visual QA artifacts
+output/
+.playwright-cli/
+
+# Research inputs stay outside the page repository
+/*.pdf
+/*.zip

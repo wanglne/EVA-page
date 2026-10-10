@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  authors: {
+    name: string;
+    url: string;
+    institution: number;
+    corresponding?: boolean;
+  }[];
+  links: { name: string; url: string; icon: string }[];
+}
+
+const { authors, links } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const institutions = [
+  "Sun Yat-sen University",
+  "Zhejiang University",
+  "Tsinghua University",
+];
+---
+
+<header class="publication-header full-bleed">
+  <div class="header-inner">
+    <div class="publication-masthead">
+      <div class="publication-branding">
+        <img
+          class="masthead-logo"
+          src={`${base}/aspire-red-stamp.svg`}
+          alt="ASPIRE — AI Security, Privacy and Robustness"
+          width="1886"
+          height="834"
+        />
+        <h1><code>EVA</code></h1>
+      </div>
+      <p class="publication-title">
+        Editing for Versatile Alignment<br class="publication-title-break" />
+        {" "}against Jailbreaks
+      </p>
+    </div>
+    <p class="conference-label">IEEE TPAMI 2026</p>
+    <div class="authors">
+      {
+        authors.map((author) => (
+          <span>
+            <>
+              <a href={author.url} target="_blank" rel="noopener noreferrer">
+                {author.name}
+              </a>
+              <sup>{`${author.institution}${author.corresponding ? "†" : ""}`}</sup>
+            </>
+          </span>
+        ))
+      }
+    </div>
+    <div class="affiliation-row">
+      <p class="affiliation"><sup>1</sup>ShanghaiTech University, ASPIRE Lab</p>
+    </div>
+    <div class="other-affiliations">
+      {
+        institutions.map((institution, i) => (
+          <span>
+            <sup>{i + 2}</sup>
+            {institution}
+          </span>
+        ))
+      }
+    </div>
+    <p class="author-notes"><span><sup>†</sup>Corresponding author.</span></p>
+    <div class="publication-links not-prose">
+      {
+        links.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer">
+            <Icon name={link.icon} />
+            <span>{link.name}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>

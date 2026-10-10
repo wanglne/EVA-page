@@ -1,0 +1,21 @@
+---
+import figures from "../data/figures.json";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const src = `${base}/figures/eva-intro.svg`;
+const { width, height } = figures.intro;
+---
+
+<figure class="overview-figure" aria-labelledby="overview-figure-title">
+  <div class="overview-figure-toolbar">
+    <h3 id="overview-figure-title">EVA in the Model Lifecycle</h3>
+  </div>
+  <img
+    src={src}
+    alt="EVA in the model lifecycle: a model released after foundational alignment is vulnerable to a jailbreak, and localized safety editing changes its harmful response into refusal during downstream adaptation."
+    width={width}
+    height={height}
+    loading="lazy"
+    decoding="async"
+  />
+</figure>

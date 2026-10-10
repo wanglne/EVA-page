@@ -1,0 +1,101 @@
+{
+  "intro": {
+    "width": 494,
+    "height": 162,
+    "title": "Explore the overview",
+    "fullTitle": "Safety editing after deployment",
+    "fullDescription": "EVA patches a deployed model through localized parameter updates, changing its response to jailbreak attempts while retaining most of its existing capabilities.",
+    "steps": [
+      {
+        "label": "Model lifecycle",
+        "title": "Safety beyond foundational alignment",
+        "description": "A model can remain vulnerable after foundational alignment. EVA operates during downstream adaptation, where new jailbreak vulnerabilities can be addressed after release.",
+        "box": [0, 0, 494, 80]
+      },
+      {
+        "label": "Jailbreak inputs",
+        "title": "Harmful intent across text and images",
+        "description": "A jailbreak can be conveyed through a textual instruction, an image, or their combination. EVA extends safety editing to both language and vision-language models.",
+        "box": [0, 80, 136, 82]
+      },
+      {
+        "label": "Localized edits",
+        "title": "Repairing a targeted part of the model",
+        "description": "EVA edits selected MLP down-projection weights to redirect harmful representations toward safe responses, while preserving the vast majority of the model.",
+        "box": [132, 83, 182, 79]
+      },
+      {
+        "label": "Safer responses",
+        "title": "Refusal from the edited model itself",
+        "description": "The edited model refuses the illustrated harmful request. At inference, EVA uses the edited target model without an auxiliary detector or editing-time language model.",
+        "box": [312, 89, 182, 73]
+      }
+    ]
+  },
+  "method": {
+    "width": 517,
+    "height": 164,
+    "title": "Walk through EVA",
+    "fullTitle": "From Harmful Keys to Safe Values",
+    "fullDescription": "EVA identifies harmful textual and visual key representations, optimizes target values that favor safe refusals, and writes the new mappings into selected MLP down-projection weights.",
+    "steps": [
+      {
+        "label": "Extract harmful token t",
+        "title": "1. Extract harmful token t",
+        "description": "An auxiliary language model identifies the harmful token \\(t\\) (here, “hack”) in the harmful query.",
+        "box": [245, 7.9, 268.42, 36.04],
+        "masks": []
+      },
+      {
+        "label": "Generate variations",
+        "title": "2. Generate variations",
+        "description": "The auxiliary language model generates diverse query variations containing the identified harmful token \\(t\\).",
+        "box": [3.5, 5.6, 271.38, 40.68],
+        "masks": []
+      },
+      {
+        "label": "Image tokens selection",
+        "title": "3. Image tokens selection",
+        "description": "EVA averages attention scores from the harmful text token to image tokens across query variations, then selects the image tokens with the highest average scores.",
+        "box": [3.4, 5, 237.85, 158.72],
+        "masks": [
+          {
+            "path": "M177.62 5.93 L176.93 6.16 L176.01 7.55 L176.01 45.72 L176.24 46.42 L177.62 47.34 L241.25 47.34 L241.25 5.93 Z",
+            "fill": "#ffffff"
+          }
+        ]
+      },
+      {
+        "label": "Calculate keys",
+        "title": "4. Calculate keys",
+        "description": "At the selected critical layer, EVA averages activations across query variations to obtain representative keys for harmful text tokens and selected image tokens.",
+        "box": [234.7, 40.7, 141.93, 122.98],
+        "masks": []
+      },
+      {
+        "label": "Optimize target values",
+        "title": "5. Optimize target values",
+        "description": "With the model weights frozen, EVA optimizes target values that favor safe refusals. A KL regularizer limits changes to the model's output distributions on benign inputs.",
+        "box": [384.4, 54.1, 114.81, 85.65],
+        "masks": [
+          {
+            "path": "M384.3 87.9 H436.71 V140 H384.3 Z",
+            "fill": "#fafbfb"
+          }
+        ]
+      },
+      {
+        "label": "Update W_down weights",
+        "title": "6. Update W_down weights",
+        "description": "EVA updates selected MLP down-projection weights in closed form to encode new key–value mappings, while a covariance based term helps preserve existing associations.",
+        "box": [313.7, 76.3, 195.65, 86.96],
+        "masks": [
+          {
+            "path": "M396.03 76.3 L396.03 87.86 L396.96 89.25 L419.16 89.71 L419.16 100.81 L420.08 102.2 L434.42 102.66 L434.65 104.75 L436.04 105.67 L451.3 105.67 L452.69 104.75 L452.92 102.66 L494.09 102.2 L495.01 100.81 L495.01 76.3 Z",
+            "fill": "#fafbfb"
+          }
+        ]
+      }
+    ]
+  }
+}

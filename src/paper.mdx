@@ -1,218 +1,127 @@
 ---
-# This title is used for the browser tab and the link-preview card (see the
-# "description" and "thumbnail" keys below). The title displayed at the top of
-# the page is set separately, on the <Header> component in the body.
-title: Academic Project Page Template
-
-# The color theme of the page. Defaults to "device" (the preference set in the user's brower or operating system). Setting this to "light" or "dark" will override the user's preference. This is useful if your figures only look good in one theme.
-theme: device
-
-# This is the icon that appears in the user's browser tab. To customize, change the favicon.svg file in /public/, or add your own file to /public/ and change the filename here.
-favicon: favicon.svg
-
-# These keys are optional. If a link to your project page is in a Google search result, text message, or social media post, it will often appear as a "link preview card" based on its title, description, favicon, and thumbnail. After you publish your page, you can double check that these previews look right using [this tool](https://linkpreview.xyz/)
-description: Simple project page template for your research paper, built with Astro and Tailwind
-thumbnail: screenshot-light.png
+title: "EVA | Editing for Versatile Alignment against Jailbreaks | IEEE TPAMI 2026"
+theme: light
+favicon: eva-titlecard-favicon.svg
+description: "EVA uses targeted model editing to improve post-deployment safety across language and vision-language models while preserving most general capabilities."
+thumbnail: social-preview.png
 ---
 
-import Header from "./components/Header.astro";
-import Video from "./components/Video.astro";
-import HighlightedSection from "./components/HighlightedSection.astro";
-import SmallCaps from "./components/SmallCaps.astro";
-import Figure from "./components/Figure.astro";
-import Picture from "./components/Picture.astro";
-import ModelViewer from "./components/ModelViewer.astro"
-import TwoColumns from "./components/TwoColumns.astro";
-import YouTubeVideo from "./components/YouTubeVideo.astro";
-import Carousel from "./components/Carousel.astro";
-import CarouselSlide from "./components/CarouselSlide.astro";
+import Header from "./components/EVAHeader.astro";
+import SectionNav from "./components/SectionNav.astro";
+import PaperFigure from "./components/PaperFigure.astro";
+import Results from "./components/Results.astro";
+import SupportingResults from "./components/SupportingResults.astro";
+import ImpactComparison from "./components/ImpactComparison.astro";
+import OverviewFigure from "./components/OverviewFigure.astro";
 import Wide from "./components/Wide.astro";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/starwind/tabs";
-import { Comparison } from "./components/Comparison.tsx";
-
-import outside from "./assets/outside.mp4";
-import dogsDiffc from "./assets/dogs-diffc.png"
-import dogsTrue from "./assets/dogs-true.png"
-import dogsMsillm from "@/assets/dogs-msillm.jpg"
 
 <Header
-  title="Academic Project Page Template"
-  conference="Conference Name"
   authors={[
-    {
-      name: "Roman Hauksson",
-      url: "https://roman.technology",
-      institution: "University of Texas at Dallas",
-      notes: ["*", "†"],
-    },
-    { name: "Author Two", institution: "Institution Two", notes: ["*", "†"] },
-    { name: "Author Three", institution: "Institution Three", notes: ["*"] },
-    { name: "Author Four", institution: "Institution Four" },
-  ]}
-  notes={[
-    { symbol: "*", text: "author note one" },
-    { symbol: "†", text: "author note two" },
+    { name: "Yi Wang", url: "https://wanglne.github.io/", institution: 1 },
+    { name: "Hongye Qiu", url: "https://openreview.net/profile?id=~Hongye_Qiu1", institution: 1 },
+    { name: "Yue Xu", url: "https://savannahxu79.github.io/", institution: 1 },
+    { name: "Sibei Yang", url: "https://sibeiyang.github.io/", institution: 2 },
+    { name: "Zhan Qin", url: "https://person.zju.edu.cn/en/zhanqin", institution: 3 },
+    { name: "Minlie Huang", url: "https://coai.cs.tsinghua.edu.cn/hml", institution: 4 },
+    { name: "Wenjie Wang", url: "https://wwj95.github.io/", institution: 1, corresponding: true },
   ]}
   links={[
-    { name: "Paper", url: "https://github.com/RomanHauksson/academic-project-astro-template", icon: "ri:file-pdf-2-line" },
-    { name: "Code", url: "https://github.com/RomanHauksson/academic-project-astro-template", icon: "ri:github-line" },
-    { name: "arXiv", url: "https://github.com/RomanHauksson/academic-project-astro-template", icon: "academicons:arxiv" },
-    { name: "Slides", url: "https://github.com/RomanHauksson/academic-project-astro-template", icon: "ri:slideshow-2-line" },
+    { name: "Paper", url: "https://arxiv.org/pdf/2605.14750", icon: "ri:file-pdf-2-line" },
+    { name: "Code", url: "https://github.com/wanglne/EVA", icon: "ri:github-line" },
+    { name: "IEEE TPAMI", url: "https://ieeexplore.ieee.org/abstract/document/11523146", icon: "ri:article-line" },
+    { name: "Hugging Face", url: "https://huggingface.co/collections/wanglne/eva-editing-for-versatile-alignment-against-jailbreaks", icon: "hugging-face" },
   ]}
->
-  {/*
-    Optionally place a cover image or video behind the header. Import the
-    asset (from src/assets/, so images are optimized) and pass it through the
-    "background" slot using the Picture or Video component:
+/>
 
-      <Picture slot="background" src={cover} alt="" />
-      <Video slot="background" src={outside} controls={false} />
-  */}
-  <Picture slot="background" src={dogsTrue} alt="" priority />
-</Header>
+<SectionNav />
 
-<HighlightedSection>
+<section id="impact" className="lead-section full-bleed" aria-labelledby="impact-title">
+  <div className="impact-layout">
+    <div className="impact-copy">
+      <h2 id="impact-title">Impact</h2>
+      <h3>Safety alignment through model editing.</h3>
+      <p>Jailbreaks can exploit both textual and visual inputs. <strong>EVA treats safety alignment as a targeted model editing task</strong>: it identifies harmful key representations, optimizes safe target values, and updates selected MLP weights. The framework applies to both LLMs and VLMs, with regularization to limit changes on benign inputs.</p>
+      <p>Experiments show reduced jailbreak success with largely retained utility across text and multimodal benchmarks.</p>
+    </div>
+    <ImpactComparison />
+  </div>
+</section>
 
-## Abstract
+<section id="overview" aria-labelledby="overview-title">
 
-This is a template you can use to create a professional-looking, accessible, and performant project page for your research paper. [See the code for the template and instructions on how to use it yourself on GitHub](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
-
-</HighlightedSection>
-
-## Visuals
-
-### Image
-
-Use the `Picture` component to display images. If you have a figure in PDF format, you can pass in its path as the `src` prop and it will be converted into a web-friendly image automatically.
-
-<Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-
-### Video
-
-<Video src={outside} />
-
-### Wide visual
-
-I constrained the maximum width of the text column to make sure it's readable even when the screen is wide. But images and other visuals should "break out" and take up more horizontal space: for this, try wrapping them in the `Wide` component.
-
-<Wide>
-  <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
+<Wide maxWidth="70rem">
+  <div className="overview-heading">
+    <div>
+      <h2 id="overview-title">Overview</h2>
+      <h3>Where does EVA fit?</h3>
+    </div>
+    <p>EVA applies safety edits during downstream adaptation, after foundational alignment. The updated weights are then deployed in place of the original weights.</p>
+  </div>
+  <OverviewFigure />
+  <div className="overview-rationale">
+    <h3>Why Use Targeted Model Editing After Release?</h3>
+    <p>A released model can encounter jailbreaks that its initial safety alignment did not anticipate. Broad safety fine-tuning can alter useful capabilities, while external defenses add components to the inference pipeline. EVA instead uses localized parameter edits to modify the model's response to harmful concepts without adding inference-time defense components.</p>
+  </div>
 </Wide>
 
-### Figure with caption
+</section>
 
-Wrap a visual in a `Figure` component to add a caption.
+<section id="methodology" aria-labelledby="methodology-title">
 
-<Figure>
-  <Picture slot="figure" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Fragment slot="caption">A photo of two dogs running side-by-side in shallow water, lossily compressed using the [DiffC algorithm](https://jeremyiv.github.io/diffc-project-page/).</Fragment>
-</Figure>
+<Wide maxWidth="70rem">
+  <div className="methodology-content">
+    <div className="methodology-heading">
+      <h2 id="methodology-title">Methodology</h2>
+      <h3>How Does EVA Edit a Model?</h3>
+    </div>
+    <PaperFigure name="method" alt="EVA editing pipeline: extract harmful text tokens, generate query variations, select related image tokens through attention, aggregate representative keys, optimize safe values, and update MLP down-projection weights." />
+    <p>Together, these steps incorporate targeted safety corrections directly into the model weights. Once editing is complete, the updated model can be deployed without an additional inference-time defense module.</p>
+  </div>
+</Wide>
 
-### Comparison slider
+</section>
 
-Use the `Comparison` component to compare two visuals with an interactive slider.
+<section id="results" aria-labelledby="results-title">
 
-<Comparison client:idle >
-  <Picture slot="itemOne" src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  <Picture slot="itemTwo" src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
-</Comparison>
+<Wide maxWidth="70rem">
+<div className="results-content">
 
-### Tab panels
+<h2 id="results-title">Results</h2>
 
-Tab panels are a great way to display a labeled collection of related visuals without taking up too much space.
+<Results />
 
-<Tabs defaultValue="true">
-  <TabsList>
-    <TabsTrigger value="true">Ground truth</TabsTrigger>
-    <TabsTrigger value="diffc">DiffC (Flux-dev)</TabsTrigger>
-    <TabsTrigger value="msillm">MS-ILLM</TabsTrigger>
-  </TabsList>
-  <TabsContent value="true">
-    <Picture
-      src={dogsTrue}
-      alt="True photo of two dogs running side-by-side in shallow water"
-    />
-  </TabsContent>
-  <TabsContent value="diffc">
-    <Picture
-      src={dogsDiffc}
-      alt="Photo of two running dogs, lossily compressed using the DiffC algorithm"
-    />
-  </TabsContent>
-  <TabsContent value="msillm">
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
-  </TabsContent>
-</Tabs>
+On Qwen2.5-VL-7B, EVA achieves an ASR of **at most 1% in each of 18 tested settings**. On InternVL3.5-8B, it reaches an MM-Vet-v2 score of **69.3**, compared with 69.1 for the vanilla model, while retaining an MMMU score of **57.6**. The text-only evaluations cover five LLMs, four safety benchmarks, and three attacks. Together, these results show how targeted editing can improve jailbreak robustness while retaining most language and multimodal utility.
 
-### Carousel
+### Efficient Updates and Visual Safety
 
-A carousel is another useful pattern for a collection of visuals that don't necessarily have meaningful labels.
+EVA prepares the evaluated InternVL model in **0.8 hours** and the text-only Vicuna model in **0.4 hours**, while maintaining **1×** reported inference overhead. Further experiments examine which visual tokens and layers to edit, and how visual semantics interact with text rendered in images.
 
-<Carousel>
-  <CarouselSlide>
-    <Picture src={dogsTrue} alt="True photo of two dogs running side-by-side in shallow water" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture src={dogsDiffc} alt="Photo of two running dogs, lossily compressed using the DiffC algorithm" />
-  </CarouselSlide>
-  <CarouselSlide>
-    <Picture
-      src={dogsMsillm}
-      alt="Photo of two running dogs, lossily compressed using MS-ILLM"
-    />
-  </CarouselSlide>
-</Carousel>
+<SupportingResults />
 
-## Two columns
+The <a href="https://github.com/wanglne/EVA" target="_blank" rel="noopener noreferrer">official repository</a> provides the editing code and released resources. Model and data releases are collected on <a href="https://huggingface.co/collections/wanglne/eva-editing-for-versatile-alignment-against-jailbreaks" target="_blank" rel="noopener noreferrer">Hugging Face</a>.
 
-Use the two columns component to display two columns of content. In this example, the first column contains a YouTube video embed and the second column contains an interactive 3D model viewer. By default, they display side by side, but if the screen is narrow enough (for example, on mobile), they're arranged vertically.
+</div>
+</Wide>
 
-<TwoColumns>
-  <YouTubeVideo slot="left" videoId="wjZofJX0v4M" />
-  <ModelViewer slot="right" src="/BoxVertexColors.glb" alt="A cube colored with a rainbow gradient" />
-</TwoColumns>
+</section>
 
-## $\LaTeX$
+<section id="citation">
 
-You can also add $\LaTeX$ formulas, rendered during the build process using [$\KaTeX$](https://katex.org/) so they're quick to load for visitors of your project page. You can write them inline, like this: $a^2 + b^2 = c^2$. Or, you can write them as a block:
+<h2>Citation</h2>
 
-$$
-\int_a^b f(x) dx
-$$
-
-## Citation
-
-If you copy your bibliography into `./bibliography.bib`, you can cite papers using their BibTeX keys, and they'll be automatically formatted and included in the bibliography section at the end. For example: [@vaswani2017attention]. Note that these citations are distinct from footnotes[^mynote], which show up in a separate section if you use them.
-
-[^mynote]: On the web, they should really be called "endnotes", since each page constitutes a full document.
-
-## Table
-
-Add simple tables using [GitHub Flavored Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables):
-
-| Model | Accuracy | F1 score | Training time (hours) |
-| :--- | :---: | :---: | :---: |
-| BERT-base | 0.89 | 0.87 | 4.5 |
-| RoBERTa-large | 0.92 | 0.91 | 7.2 |
-| DistilBERT | 0.86 | 0.84 | 2.1 |
-| XLNet | 0.90 | 0.89 | 6.8 |
-
-## BibTeX citation
-
-Displaying the BibTeX entry for your paper in a code block makes it easy to copy and paste.
+If you find EVA useful for your research, please consider citing our <a href="https://arxiv.org/pdf/2605.14750" target="_blank" rel="noopener noreferrer">paper</a>:
 
 ```bibtex
-@misc{roman2024academic,
-  author = "{Roman Hauksson}",
-  title = "Academic Project Page Template",
-  year = "2024",
-  howpublished = "\url{https://research-template.roman.technology}",
-}
+@ARTICLE{11523146,
+  author={Wang, Yi and Qiu, Hongye and Xu, Yue and Yang, Sibei and Qin, Zhan and Huang, Minlie and Wang, Wenjie},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title={EVA: Editing for Versatile Alignment Against Jailbreaks},
+  year={2026},
+  volume={48},
+  number={10},
+  pages={11776-11791},
+  keywords={Automatic speech recognition;Modeling;Safety;Visualization;Large language models;Conferences;Optimization;Educational institutions;Light emitting diodes;Tuning;Safety alignment;jailbreak attacks;model editing;large language models;vision language models},
+  doi={10.1109/TPAMI.2026.3694189}}
 ```
 
-## Bibliography
-
-[^ref]
+</section>

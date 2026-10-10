@@ -13,6 +13,7 @@ import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
+  devToolbar: { enabled: false },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -32,11 +33,32 @@ export default defineConfig({
   integrations: [
     icon(),
     astroExpressiveCode({
+      defaultProps: { wrap: true },
+      themes: [
+        {
+          name: "eva-unit02",
+          type: "light",
+          fg: "#171719",
+          bg: "#efedeb",
+          settings: [
+            { settings: { foreground: "#171719" } },
+            {
+              scope: ["keyword", "storage", "entity.name", "support.type"],
+              settings: { foreground: "#b7192c" },
+            },
+            {
+              scope: ["comment", "punctuation"],
+              settings: { foreground: "#666160" },
+            },
+          ],
+        },
+      ],
       styleOverrides: {
+        codeFontSize: "1rem",
+        codeLineHeight: "1.5",
         borderRadius: "0.5rem",
         borderWidth: "0",
-        codeBackground: ({ theme }) =>
-          `var(--color-zinc-${theme.type === "dark" ? "800" : "200"})`,
+        codeBackground: "var(--page-panel)",
         frames: {
           shadowColor: "transparent",
         },
@@ -49,7 +71,31 @@ export default defineConfig({
   ],
   fonts: [
     {
-      provider: fontProviders.google(),
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/matisse-pro-eb-latin.woff"],
+            weight: "800",
+            style: "normal",
+          },
+        ],
+      },
+      name: "Matisse Pro EB",
+      cssVariable: "--font-matisse-pro-eb",
+      weights: [800],
+    },
+    {
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            src: ["./src/assets/fonts/noto-sans-latin.woff2"],
+            weight: "100 900",
+            style: "normal",
+          },
+        ],
+      },
       name: "Noto Sans",
       cssVariable: "--font-noto-sans",
       weights: ["100 900"],

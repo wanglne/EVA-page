@@ -27,7 +27,7 @@ const definitions = {
   safety: {
     llm: {
       source: "Table 1",
-      note: "Attack success rate (%), lower is better. GCG, AutoDAN, and PAIR are evaluated on each of the four benchmarks. Harmfulness is judged using the HarmBench classifier.",
+      note: "Attack success rate (ASR, %), lower is better. Bold values indicate the lowest ASR among defense methods, including ties. Attack success is judged by the HarmBench classifier.",
       tables: [
         {
           title: "Textual jailbreaks · ASR ↓",
@@ -42,10 +42,10 @@ const definitions = {
     },
     vlm: {
       source: "Table 3",
-      note: "Attack success rate (%), lower is better. ADV-16 images are generated on LLaVA-1.5-7B and transferred to the other VLMs. EVA (text) is the text-only editing variant.",
+      note: "Attack success rate (ASR, %), lower is better. ADV-16 images are optimized against LLaVA-1.5-7B and transferred to the other VLMs. EVA (text) uses only textual keys for editing.",
       tables: [
         {
-          title: "Visual jailbreaks · ASR ↓",
+          title: "Visual jailbreak attacks · ASR ↓",
           start: 0,
           end: 12,
           groups: benchmarks.map((name) => ({
@@ -71,7 +71,7 @@ const definitions = {
   utility: {
     llm: {
       source: "Table 2",
-      note: "Higher scores indicate better utility. Task scores follow the paper's original scales. ↑ marks improvements over the vanilla model reported in the paper.",
+      note: "Higher scores indicate better utility. Bold values mark the best scores among defense methods (excluding LoRA), including ties. ↑ indicates improvements over Vanilla.",
       tables: [
         {
           title: "General language capabilities ↑",
@@ -92,7 +92,7 @@ const definitions = {
     },
     vlm: {
       source: "Table 5",
-      note: "Higher scores indicate better utility. MM-Vet-v2, MMMU, and MMStar evaluate general multimodal capabilities alongside the safety results.",
+      note: "Higher scores indicate better utility. Bold values mark the best scores among defense methods, including ties.",
       tables: [
         {
           title: "General multimodal capabilities ↑",

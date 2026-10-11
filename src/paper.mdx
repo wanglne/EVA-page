@@ -11,6 +11,9 @@ import SectionNav from "./components/SectionNav.astro";
 import PaperFigure from "./components/PaperFigure.astro";
 import Results from "./components/Results.astro";
 import SupportingResults from "./components/SupportingResults.astro";
+import VisualRegionResults from "./components/VisualRegionResults.astro";
+import VisualTokenResults from "./components/VisualTokenResults.astro";
+import EditingEfficiency from "./components/EditingEfficiency.astro";
 import ImpactComparison from "./components/ImpactComparison.astro";
 import OverviewFigure from "./components/OverviewFigure.astro";
 import Wide from "./components/Wide.astro";
@@ -88,31 +91,42 @@ import Wide from "./components/Wide.astro";
 
 <h2 id="results-title">Results</h2>
 
+### How Does EVA Balance Safety and Utility?
+
 <Results />
 
-On Qwen2.5-VL-7B, EVA achieves an ASR of **at most 1% in each of 18 tested settings**. On InternVL3.5-8B, it reaches an MM-Vet-v2 score of **69.3**, compared with 69.1 for the vanilla model, while retaining an MMMU score of **57.6**. The text-only evaluations cover five LLMs, four safety benchmarks, and three attacks. Together, these results show how targeted editing can improve jailbreak robustness while retaining most language and multimodal utility.
+Across five LLMs and three VLMs, EVA substantially reduces jailbreak ASR under diverse textual and visual attacks while retaining most general task utility.
 
-### Efficient Updates and Visual Safety
+### How Does Visual Token Selection Affect Robustness?
 
-EVA prepares the evaluated InternVL model in **0.8 hours** and the text-only Vicuna model in **0.4 hours**, while maintaining **1×** reported inference overhead. Further experiments examine which visual tokens and layers to edit, and how visual semantics interact with text rendered in images.
+We compare edits built from scene content, OCR text, and composite inputs. Select a variant to inspect its permitted visual token region and measured attack success.
+
+<VisualRegionResults />
+
+<VisualTokenResults />
 
 <SupportingResults />
 
-The <a href="https://github.com/wanglne/EVA" target="_blank" rel="noopener noreferrer">official repository</a> provides the editing code and released resources. Model and data releases are collected on <a href="https://huggingface.co/collections/wanglne/eva-editing-for-versatile-alignment-against-jailbreaks" target="_blank" rel="noopener noreferrer">Hugging Face</a>.
+### Editing Cost and Deployment
+
+<EditingEfficiency />
 
 </div>
 </Wide>
 
 </section>
 
-<section id="citation">
+<section id="citation" aria-labelledby="citation-title">
 
-<h2>Citation</h2>
+<Wide maxWidth="70rem">
+<div className="citation-content">
+
+<h2 id="citation-title">Citation</h2>
 
 If you find EVA useful for your research, please consider citing our <a href="https://arxiv.org/pdf/2605.14750" target="_blank" rel="noopener noreferrer">paper</a>:
 
 ```bibtex
-@ARTICLE{11523146,
+@ARTICLE{wang2026eva,
   author={Wang, Yi and Qiu, Hongye and Xu, Yue and Yang, Sibei and Qin, Zhan and Huang, Minlie and Wang, Wenjie},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
   title={EVA: Editing for Versatile Alignment Against Jailbreaks},
@@ -123,5 +137,8 @@ If you find EVA useful for your research, please consider citing our <a href="ht
   keywords={Automatic speech recognition;Modeling;Safety;Visualization;Large language models;Conferences;Optimization;Educational institutions;Light emitting diodes;Tuning;Safety alignment;jailbreak attacks;model editing;large language models;vision language models},
   doi={10.1109/TPAMI.2026.3694189}}
 ```
+
+</div>
+</Wide>
 
 </section>

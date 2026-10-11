@@ -4418,19 +4418,19 @@
             {
               "value": "0.777",
               "raw": "0.777",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.483",
               "raw": "0.483",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.287",
               "raw": "0.287",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -4442,7 +4442,7 @@
             {
               "value": "0.982",
               "raw": "0.982",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -4454,7 +4454,7 @@
             {
               "value": "0.272",
               "raw": "0.272",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -4489,7 +4489,7 @@
             {
               "value": "0.610",
               "raw": "0.610",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -4501,7 +4501,7 @@
             {
               "value": "0.898",
               "raw": "0.898",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -4583,13 +4583,13 @@
             {
               "value": "0.478",
               "raw": "0.478",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.265",
               "raw": "0.265",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -4613,7 +4613,7 @@
             {
               "value": "0.267",
               "raw": "0.267",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]
@@ -4683,7 +4683,7 @@
             {
               "value": "0.762",
               "raw": "0.762",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -4701,19 +4701,19 @@
             {
               "value": "0.560",
               "raw": "0.560",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.981",
               "raw": "0.981",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.854",
               "raw": "0.854",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -4762,19 +4762,19 @@
             {
               "value": "0.977",
               "raw": "0.977",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.909",
               "raw": "0.909",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.267",
               "raw": "0.267",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -4785,25 +4785,25 @@
             {
               "value": "6.90",
               "raw": "6.90",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.769",
               "raw": "0.769",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.480",
               "raw": "0.480",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.288",
               "raw": "0.288",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -4868,7 +4868,7 @@
             {
               "value": "0.976",
               "raw": "0.976",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -4909,7 +4909,7 @@
             {
               "value": "0.228",
               "raw": "0.228",
-              "best": false,
+              "best": true,
               "improved": true
             },
             {
@@ -4986,7 +4986,7 @@
             {
               "value": "0.260",
               "raw": "0.260",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]
@@ -4997,25 +4997,25 @@
             {
               "value": "6.31",
               "raw": "6.31",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.718",
               "raw": "0.718",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.462",
               "raw": "0.462",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.228",
               "raw": "0.228",
-              "best": false,
+              "best": true,
               "improved": true
             },
             {
@@ -5033,7 +5033,7 @@
             {
               "value": "0.905",
               "raw": "0.905",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5052,13 +5052,13 @@
             {
               "value": "7.93",
               "raw": "7.93",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.852",
               "raw": "0.852",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5070,7 +5070,7 @@
             {
               "value": "0.498",
               "raw": "0.498",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5088,7 +5088,7 @@
             {
               "value": "0.962",
               "raw": "0.962",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5129,7 +5129,7 @@
             {
               "value": "0.700",
               "raw": "0.700",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5147,7 +5147,7 @@
             {
               "value": "0.258",
               "raw": "0.258",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -5288,7 +5288,7 @@
             {
               "value": "0.685",
               "raw": "0.685",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5306,7 +5306,7 @@
             {
               "value": "0.254",
               "raw": "0.254",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]
@@ -5317,13 +5317,13 @@
             {
               "value": "7.35",
               "raw": "7.35",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.814",
               "raw": "0.814",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5335,7 +5335,7 @@
             {
               "value": "0.444",
               "raw": "0.444",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5353,7 +5353,7 @@
             {
               "value": "0.923",
               "raw": "0.923",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5408,7 +5408,7 @@
             {
               "value": "0.922",
               "raw": "0.922",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5425,13 +5425,13 @@
             {
               "value": "8.14",
               "raw": "8.14",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.782",
               "raw": "0.782",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5478,7 +5478,7 @@
             {
               "value": "8.05",
               "raw": "8.05",
-              "best": false,
+              "best": true,
               "improved": true
             },
             {
@@ -5537,7 +5537,7 @@
             {
               "value": "0.768",
               "raw": "0.768",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5673,7 +5673,7 @@
             {
               "value": "0.890",
               "raw": "0.890",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5692,13 +5692,13 @@
             {
               "value": "8.82",
               "raw": "8.82",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.840",
               "raw": "0.840",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5710,13 +5710,13 @@
             {
               "value": "0.510",
               "raw": "0.510",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "0.835",
               "raw": "0.835",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5728,7 +5728,7 @@
             {
               "value": "0.928",
               "raw": "0.928",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5751,7 +5751,7 @@
             {
               "value": "0.840",
               "raw": "0.840",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5775,7 +5775,7 @@
             {
               "value": "0.988",
               "raw": "0.988",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -5787,7 +5787,7 @@
             {
               "value": "0.258",
               "raw": "0.258",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -5804,7 +5804,7 @@
             {
               "value": "0.838",
               "raw": "0.838",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5957,7 +5957,7 @@
             {
               "value": "8.48",
               "raw": "8.48",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5981,7 +5981,7 @@
             {
               "value": "0.833",
               "raw": "0.833",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -5993,13 +5993,13 @@
             {
               "value": "0.910",
               "raw": "0.910",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
               "value": "0.256",
               "raw": "0.256",
-              "best": false,
+              "best": true,
               "improved": true
             }
           ]
@@ -6026,7 +6026,7 @@
             {
               "value": "32.5",
               "raw": "32.5",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -6095,7 +6095,7 @@
             {
               "value": "32.3",
               "raw": "32.3",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]
@@ -6141,7 +6141,7 @@
             {
               "value": "32.3",
               "raw": "32.3",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]
@@ -6154,7 +6154,7 @@
             {
               "value": "56.9",
               "raw": "56.9",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
@@ -6246,7 +6246,7 @@
             {
               "value": "55.7",
               "raw": "55.7",
-              "best": false,
+              "best": true,
               "improved": false
             },
             {
@@ -6300,13 +6300,13 @@
             {
               "value": "57.6",
               "raw": "57.6",
-              "best": true,
+              "best": false,
               "improved": false
             },
             {
               "value": "68.3",
               "raw": "68.3",
-              "best": true,
+              "best": false,
               "improved": false
             }
           ]
@@ -6398,7 +6398,7 @@
             {
               "value": "67.6",
               "raw": "67.6",
-              "best": false,
+              "best": true,
               "improved": false
             }
           ]

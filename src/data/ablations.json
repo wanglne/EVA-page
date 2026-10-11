@@ -1,0 +1,193 @@
+{
+  "visualRegions": {
+    "scenarios": ["SD", "TYPO", "SD+TYPO"],
+    "models": [
+      {
+        "id": "internvl",
+        "name": "InternVL3.5-8B",
+        "values": {
+          "Vanilla": [14, 48, 48],
+          "EVA": [3, 6, 3],
+          "EVA (Image-Focused)": [6, 17, 7],
+          "EVA (Image-Only)": [3, 36, 16],
+          "EVA (TYPO-Focused)": [10, 4, 27],
+          "EVA (TYPO-Only)": [13, 2, 39]
+        }
+      },
+      {
+        "id": "qwen-vl",
+        "name": "Qwen2.5-VL-7B",
+        "values": {
+          "Vanilla": [11, 40, 51],
+          "EVA": [1, 0, 0],
+          "EVA (Image-Focused)": [1, 15, 12],
+          "EVA (Image-Only)": [0, 18, 13],
+          "EVA (TYPO-Focused)": [5, 0, 25],
+          "EVA (TYPO-Only)": [10, 0, 40]
+        }
+      }
+    ],
+    "variants": [
+      {
+        "id": "eva",
+        "method": "EVA",
+        "label": "EVA",
+        "title": "EVA · composite editing",
+        "description": "Use composite editing images and allow visual token selection across both scene and OCR regions.",
+        "image": "eva-editing-composite.jpg",
+        "width": 260,
+        "height": 328,
+        "outline": [0, 0, 100, 100]
+      },
+      {
+        "id": "image-focused",
+        "method": "EVA (Image-Focused)",
+        "label": "Image-Focused",
+        "title": "Image-Focused",
+        "description": "Use composite editing images, but restrict visual token selection to non-OCR regions.",
+        "image": "eva-editing-composite.jpg",
+        "width": 260,
+        "height": 328,
+        "outline": [0, 0, 100, 79.26829268292683]
+      },
+      {
+        "id": "image-only",
+        "method": "EVA (Image-Only)",
+        "label": "Image-Only",
+        "title": "Image-Only",
+        "description": "Use scene images without the OCR region.",
+        "image": "eva-editing-scene.jpg",
+        "width": 260,
+        "height": 260,
+        "outline": [0, 0, 100, 100]
+      },
+      {
+        "id": "typo-focused",
+        "method": "EVA (TYPO-Focused)",
+        "label": "TYPO-Focused",
+        "title": "TYPO-Focused",
+        "description": "Use composite editing images, but restrict visual token selection to OCR regions.",
+        "image": "eva-editing-composite.jpg",
+        "width": 260,
+        "height": 328,
+        "outline": [0, 79.26829268292683, 100, 20.73170731707317]
+      },
+      {
+        "id": "typo-only",
+        "method": "EVA (TYPO-Only)",
+        "label": "TYPO-Only",
+        "title": "TYPO-Only",
+        "description": "Use images containing only OCR text.",
+        "image": "eva-editing-ocr.jpg",
+        "width": 260,
+        "height": 68,
+        "outline": [0, 0, 100, 100]
+      }
+    ]
+  },
+  "visualTokens": {
+    "model": "InternVL3.5-8B",
+    "settings": [
+      {
+        "label": "Original",
+        "asr": 48,
+        "utility": 69.1
+      },
+      {
+        "label": "Top 1",
+        "asr": 3,
+        "utility": 69.3
+      },
+      {
+        "label": "Top 2",
+        "asr": 1,
+        "utility": 45.4
+      },
+      {
+        "label": "Top 3",
+        "asr": 0,
+        "utility": 19.7
+      }
+    ]
+  },
+  "efficiency": [
+    {
+      "id": "internvl",
+      "name": "InternVL3.5-8B",
+      "family": "VLM",
+      "descriptions": {
+        "training": "EVA requires 0.8 hours of training on InternVL3.5-8B, compared with 2.0 hours for VLGuard and 1.2 hours for AdaShield-A.",
+        "inference": "EVA retains the original model's inference cost without requiring an additional defense module.",
+        "asr": "In the efficiency evaluation, EVA achieves 0.9% average ASR, compared with 1.8% for VLGuard and 3.0% for AdaShield-A."
+      },
+      "rows": [
+        {
+          "method": "JailGuard",
+          "training": null,
+          "inference": 8,
+          "asr": 13.1
+        },
+        {
+          "method": "AdaShield-A",
+          "training": 1.2,
+          "inference": 1.05,
+          "asr": 3.0
+        },
+        {
+          "method": "VLGuard",
+          "training": 2.0,
+          "inference": 1,
+          "asr": 1.8
+        },
+        {
+          "method": "EVA",
+          "training": 0.8,
+          "inference": 1,
+          "asr": 0.9
+        }
+      ]
+    },
+    {
+      "id": "vicuna",
+      "name": "Vicuna-7B-v1.5",
+      "family": "LLM",
+      "descriptions": {
+        "training": "EVA (text) requires 0.4 hours of training on Vicuna-7B-v1.5, compared with 1.0 hour for Circuit Breakers and 0.6 hours for SafeDecoding.",
+        "inference": "EVA (text) retains the original model's inference cost without requiring an additional defense module.",
+        "asr": "In the efficiency evaluation, EVA (text) achieves 6.7% average ASR, compared with 7.3% for Circuit Breakers and 8.8% for LED."
+      },
+      "rows": [
+        {
+          "method": "LoRA",
+          "training": 1.5,
+          "inference": 1,
+          "asr": 23.2
+        },
+        {
+          "method": "SafeDecoding",
+          "training": 0.6,
+          "inference": 1.07,
+          "asr": 10.7
+        },
+        {
+          "method": "LED",
+          "training": 6.2,
+          "inference": 1,
+          "asr": 8.8
+        },
+        {
+          "method": "Circuit Breakers",
+          "training": 1.0,
+          "inference": 1,
+          "asr": 7.3
+        },
+        {
+          "method": "EVA (text)",
+          "training": 0.4,
+          "inference": 1,
+          "asr": 6.7
+        }
+      ]
+    }
+  ]
+}

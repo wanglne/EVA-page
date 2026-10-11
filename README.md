@@ -6,7 +6,7 @@ Project page for **EVA: Editing for Versatile Alignment against Jailbreaks**, pu
 - [IEEE publication](https://ieeexplore.ieee.org/document/11523146)
 - [Official code](https://github.com/wanglne/EVA)
 
-The page follows the layout, navigation, interactive figures, and result-table design of the SaLR project page. Matisse Pro EB is used in the publication header, navigation, section headings, and headline metrics. Body text, controls, and data use Noto Sans; the citation uses a monospace font. A black-and-white publication header leads into a light reading area with red accents, neutral gray panels, and a solid background. The ASPIRE logo retains its original red. The Matisse webfont preserves the original OTF glyphs and includes Latin characters and symbols used by the page. Paper figures retain their original artwork on white canvases.
+The page follows the layout, navigation, interactive figures, and result-table design of the SaLR project page. Matisse Pro EB is used in the publication header, navigation, and section headings. Body text, controls, and data use Noto Sans; the citation uses a monospace font. A black-and-white publication header leads into a light reading area with red accents, neutral gray panels, and a solid background. The ASPIRE logo retains its original red. The Matisse webfont preserves the original OTF glyphs and includes Latin characters and symbols used by the page. Paper figures retain their original artwork on white canvases.
 
 ## Local development
 
@@ -34,7 +34,11 @@ npm run build
 | Interactive figure explanations and crop coordinates            | `src/data/figures.json`                                         |
 | Main result values                                              | `src/data/results.json`                                         |
 | Table headings, notes, model selectors, and tabs                | `src/components/Results.astro`                                  |
-| Efficiency and visual ablation results                          | `src/components/SupportingResults.astro`                        |
+| Editing-region, visual token, and efficiency values             | `src/data/ablations.json`                                       |
+| Editing-region controls, descriptions, and comparison table     | `src/components/VisualRegionResults.astro`                      |
+| Visual token controls and safety–utility comparison             | `src/components/VisualTokenResults.astro`                       |
+| Efficiency controls and comparisons                             | `src/components/EditingEfficiency.astro`                        |
+| Critical layers, behavior transfer, and key representations     | `src/components/SupportingResults.astro`                        |
 | Typography, colors, spacing, and responsive layout              | `src/styles/eva.css`                                            |
 | Navigation labels and anchors                                   | `src/components/SectionNav.astro`                               |
 | Vector figures                                                  | `public/figures/`                                               |
@@ -42,7 +46,7 @@ npm run build
 
 The section order is Impact → Overview → Methodology → Results → Citation. External links open in a new tab.
 
-The main result data are transcribed from Tables 1–3 and 5–7 of the accepted manuscript. ASR ratios are displayed as percentages; utility scores retain their reported scales. Supporting results come from Tables 4, 8, and 9. SVG figures are converted from the original PDF figures, preserving vector content and embedded images. Original PDFs, LaTeX archives, and local preview screenshots are not needed in the published repository.
+The main result data are transcribed from Tables 1–3 and 5 of the accepted manuscript. ASR ratios are displayed as percentages; utility scores retain their reported scales. The editing-region and visual token ablations use Tables 8 & 10. Editing efficiency uses Table 9; the supporting figures cover critical layers, cross-behavior transfer, and harmful key representations (Figures 3–7). The editing-input JPEGs preserve the original images embedded in Figure 8 without re-encoding. SVG figures are converted from the original PDF figures, preserving vector content and embedded images. Original PDFs, LaTeX archives, and local preview screenshots are not needed in the published repository.
 
 ## GitHub Pages
 

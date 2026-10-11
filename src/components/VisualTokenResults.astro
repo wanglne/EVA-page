@@ -1,0 +1,179 @@
+---
+import ablations from "../data/ablations.json";
+
+const { model, settings } = ablations.visualTokens;
+const selected = settings[1];
+const original = settings[0];
+const bestASR = Math.min(...settings.slice(1).map((setting) => setting.asr));
+const bestUtility = Math.max(
+  ...settings.slice(1).map((setting) => setting.utility),
+);
+---
+
+<div class="visual-token-layout">
+  <div class="visual-token-copy">
+    <h3 id="visual-token-results-title">
+      How Many Visual Tokens Should Be Selected?
+    </h3>
+    <p>
+      Selecting one visual token reduces ASR from 48% to 3% while keeping
+      MM-Vet-v2 at <strong>69.3</strong>, compared with 69.1 for the original
+      model. Selecting more tokens lowers ASR further but reduces utility in
+      this ablation.
+    </p>
+  </div>
+  <eva-token-results
+    class="visual-token-panel not-prose"
+    data-settings={JSON.stringify(settings)}
+  >
+    <div class="ablation-panel-header">
+      <h4>{model}</h4>
+      <span>Visual token selection</span>
+    </div>
+    <div
+      class="visual-token-choices"
+      role="group"
+      aria-label="Number of selected visual tokens"
+    >
+      {
+        settings.map((setting, index) => (
+          <button
+            type="button"
+            data-setting={index}
+            aria-pressed={index === 1 ? "true" : "false"}
+          >
+            {setting.label}
+          </button>
+        ))
+      }
+    </div>
+    <div class="visual-token-metrics" aria-live="polite" aria-atomic="true">
+      <div class="visual-token-stat">
+        <span class="visual-token-stat-label">MM-SafetyBench ASR ↓</span>
+        <p class="visual-token-number">
+          <span
+            class:list={{
+              "visual-token-asr": true,
+              "best-value": selected.asr === bestASR,
+            }}>{selected.asr}</span
+          ><small>%</small>
+        </p>
+        <div class="visual-token-meter" aria-hidden="true">
+          <span class="visual-token-asr-bar" style={`width: ${selected.asr}%;`}
+          ></span>
+        </div>
+        <p class="visual-token-baseline">
+          Original {original.asr}%
+        </p>
+      </div>
+      <div class="visual-token-stat">
+        <span class="visual-token-stat-label">MM-Vet-v2 score ↑</span>
+        <p class="visual-token-number">
+          <span
+            class:list={{
+              "visual-token-utility": true,
+              "best-value": selected.utility === bestUtility,
+            }}>{selected.utility.toFixed(1)}</span
+          >
+        </p>
+        <div class="visual-token-meter" aria-hidden="true">
+          <span
+            class="visual-token-utility-bar"
+            style={`width: ${selected.utility}%;`}></span>
+        </div>
+        <p class="visual-token-baseline">
+          Original {original.utility}
+        </p>
+      </div>
+    </div>
+  </eva-token-results>
+</div>
+
+<script>
+  class EVATokenResults extends HTMLElement {
+    private cleanup?: () => void;
+
+    connectedCallback() {
+      if (this.cleanup) return;
+      const settings: { label: string; asr: number; utility: number }[] =
+        JSON.parse(this.dataset.settings!);
+      const buttons = Array.from(
+        this.querySelectorAll<HTMLButtonElement>("button[data-setting]"),
+      );
+      const asr = this.querySelector<HTMLElement>(".visual-token-asr")!;
+      const utility = this.querySelector<HTMLElement>(".visual-token-utility")!;
+      const asrBar = this.querySelector<HTMLElement>(".visual-token-asr-bar")!;
+      const utilityBar = this.querySelector<HTMLElement>(
+        ".visual-token-utility-bar",
+      )!;
+      const bestASR = Math.min(
+        ...settings.slice(1).map((setting) => setting.asr),
+      );
+      const bestUtility = Math.max(
+        ...settings.slice(1).map((setting) => setting.utility),
+      );
+      const controller = new AbortController();
+      const { signal } = controller;
+
+      buttons.forEach((button, index) => {
+        button.addEventListener(
+          "click",
+          () => {
+            const setting = settings[Number(button.dataset.setting)];
+            buttons.forEach((item) =>
+              item.setAttribute("aria-pressed", String(item === button)),
+            );
+            asr.textContent = String(setting.asr);
+            utility.textContent = setting.utility.toFixed(1);
+            asr.classList.toggle(
+              "best-value",
+              index !== 0 && setting.asr === bestASR,
+            );
+            utility.classList.toggle(
+              "best-value",
+              index !== 0 && setting.utility === bestUtility,
+            );
+            asrBar.style.width = `${setting.asr}%`;
+            utilityBar.style.width = `${setting.utility}%`;
+          },
+          { signal },
+        );
+        button.addEventListener(
+          "keydown",
+          (event) => {
+            const offset =
+              event.key === "ArrowRight"
+                ? 1
+                : event.key === "ArrowLeft"
+                  ? -1
+                  : 0;
+            const next =
+              event.key === "Home"
+                ? buttons[0]
+                : event.key === "End"
+                  ? buttons[buttons.length - 1]
+                  : offset
+                    ? buttons[
+                        (index + offset + buttons.length) % buttons.length
+                      ]
+                    : null;
+            if (next) {
+              event.preventDefault();
+              next.click();
+              next.focus();
+            }
+          },
+          { signal },
+        );
+      });
+      this.cleanup = () => controller.abort();
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.();
+      this.cleanup = undefined;
+    }
+  }
+  if (!customElements.get("eva-token-results"))
+    customElements.define("eva-token-results", EVATokenResults);
+</script>

@@ -1,0 +1,335 @@
+---
+import ablations from "../data/ablations.json";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const { scenarios, variants } = ablations.visualRegions;
+const models: {
+  id: string;
+  name: string;
+  values: Record<string, number[]>;
+}[] = ablations.visualRegions.models;
+const model = models[0];
+const variant = variants[0];
+const bestScores = (values: Record<string, number[]>) =>
+  scenarios.map((_, index) =>
+    Math.min(...Object.values(values).map((scores) => scores[index])),
+  );
+const best = bestScores(model.values);
+---
+
+<eva-region-results
+  class="visual-region-panel not-prose"
+  data-models={JSON.stringify(models)}
+  data-variants={JSON.stringify(variants)}
+  data-figures-base={`${base}/figures/`}
+>
+  <div class="ablation-panel-header">
+    <h4>Which image regions matter?</h4>
+    <label for="visual-region-model">
+      Model
+      <select id="visual-region-model">
+        {models.map((item) => <option value={item.id}>{item.name}</option>)}
+      </select>
+    </label>
+  </div>
+  <div class="visual-region-main">
+    <div class="visual-region-input">
+      <span class="visual-region-input-label">Editing image</span>
+      <div class="visual-region-image-area">
+        <div class="visual-region-image-holder">
+          <img
+            src={`${base}/figures/${variant.image}`}
+            width={variant.width}
+            height={variant.height}
+            alt={`Figure 8 editing image: ${variant.title}`}
+            loading="lazy"
+            decoding="async"
+          />
+          <div
+            class="visual-region-outline"
+            aria-hidden="true"
+            style="left: 0; top: 0; width: 100%; height: 100%;"
+          >
+          </div>
+        </div>
+      </div>
+      <p class="visual-region-input-note">
+        Highlighted: permitted visual token selection region.
+      </p>
+    </div>
+    <div class="visual-region-output" aria-live="polite" aria-atomic="true">
+      <h4 class="visual-region-title">{variant.title}</h4>
+      <p class="visual-region-copy">{variant.description}</p>
+      <div class="visual-region-legend">
+        <span
+          ><i class="region-swatch region-swatch-original"></i>Original model</span
+        >
+        <span
+          ><i class="region-swatch region-swatch-edited"></i>Selected variant</span
+        >
+        <span class="visual-region-unit">ASR (%) ↓</span>
+      </div>
+      <div class="visual-region-bars">
+        {
+          scenarios.map((scenario, index) => (
+            <div class="visual-region-result" data-region-scenario={index}>
+              <div class="visual-region-result-heading">
+                <span>{scenario}</span>
+                <span class="visual-region-result-values">
+                  <span class="visual-region-before">
+                    {model.values.Vanilla[index]}% →
+                  </span>
+                  <span
+                    class:list={{
+                      "visual-region-after": true,
+                      "best-value":
+                        model.values[variant.method][index] === best[index],
+                    }}
+                  >
+                    {model.values[variant.method][index]}%
+                  </span>
+                </span>
+              </div>
+              <div class="visual-region-track" aria-hidden="true">
+                <span
+                  class="visual-region-original-bar"
+                  style={`width: ${model.values.Vanilla[index]}%;`}
+                />
+                <span
+                  class="visual-region-edited-bar"
+                  style={`width: ${model.values[variant.method][index]}%;`}
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div
+    class="visual-region-choices"
+    role="group"
+    aria-label="Visual editing variant"
+  >
+    {
+      variants.map((item, index) => (
+        <button
+          type="button"
+          data-variant={item.id}
+          aria-pressed={index === 0 ? "true" : "false"}
+        >
+          {item.label}
+        </button>
+      ))
+    }
+  </div>
+  <details class="evidence-details visual-region-details">
+    <summary>Compare all editing variants <span>Table 8</span></summary>
+    <div class="details-body">
+      <div
+        class="table-scroll visual-region-table-scroll"
+        role="region"
+        tabindex="0"
+        aria-label="Visual editing variants on InternVL3.5-8B"
+      >
+        <table>
+          <caption class="sr-only"
+            >Visual editing variants on MM-SafetyBench. Table 8.</caption
+          >
+          <colgroup
+            ><col class="visual-region-method-column" /><col
+              span="3"
+            /></colgroup
+          >
+          <thead
+            ><tr
+              ><th scope="col">Method</th>{
+                scenarios.map((scenario) => <th scope="col">{scenario} ↓</th>)
+              }</tr
+            ></thead
+          >
+          {
+            models.map((item, modelIndex) => {
+              const best = bestScores(item.values);
+              return (
+                <tbody
+                  data-region-table-model={item.id}
+                  hidden={modelIndex !== 0}
+                >
+                  {Object.entries(item.values).map(([method, scores]) => (
+                    <tr class:list={{ "eva-row": method === "EVA" }}>
+                      <th scope="row">{method}</th>
+                      {scores.map((score, index) => (
+                        <td>
+                          <span
+                            class:list={{ "best-value": score === best[index] }}
+                          >
+                            {score}%
+                          </span>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              );
+            })
+          }
+        </table>
+      </div>
+      <p class="table-note">
+        MM-SafetyBench ASR (%), lower is better. Focused variants use composite
+        images with restricted token selection; Only variants use images
+        containing either scene content or rendered text.
+      </p>
+    </div>
+  </details>
+</eva-region-results>
+
+<script>
+  class EVARegionResults extends HTMLElement {
+    private cleanup?: () => void;
+
+    connectedCallback() {
+      if (this.cleanup) return;
+      type Variant = {
+        id: string;
+        method: string;
+        title: string;
+        description: string;
+        image: string;
+        width: number;
+        height: number;
+        outline: number[];
+      };
+      type Model = {
+        id: string;
+        name: string;
+        values: Record<string, number[]>;
+      };
+      const models: Model[] = JSON.parse(this.dataset.models!);
+      const variants: Variant[] = JSON.parse(this.dataset.variants!);
+      const modelSelect = this.querySelector<HTMLSelectElement>("select")!;
+      const image = this.querySelector<HTMLImageElement>(
+        ".visual-region-image-holder img",
+      )!;
+      const outline = this.querySelector<HTMLElement>(
+        ".visual-region-outline",
+      )!;
+      const title = this.querySelector<HTMLElement>(".visual-region-title")!;
+      const copy = this.querySelector<HTMLElement>(".visual-region-copy")!;
+      const tableRegion = this.querySelector<HTMLElement>(
+        ".visual-region-table-scroll",
+      )!;
+      const buttons = Array.from(
+        this.querySelectorAll<HTMLButtonElement>("button[data-variant]"),
+      );
+      const controller = new AbortController();
+      const { signal } = controller;
+      let selected = variants[0];
+
+      const render = () => {
+        const model = models.find((item) => item.id === modelSelect.value)!;
+        title.textContent = selected.title;
+        copy.textContent = selected.description;
+        image.src = `${this.dataset.figuresBase}${selected.image}`;
+        image.width = selected.width;
+        image.height = selected.height;
+        image.alt = `Figure 8 editing image: ${selected.title}`;
+        const [left, top, width, height] = selected.outline;
+        Object.assign(outline.style, {
+          left: `${left}%`,
+          top: `${top}%`,
+          width: `${width}%`,
+          height: `${height}%`,
+        });
+        buttons.forEach((button) =>
+          button.setAttribute(
+            "aria-pressed",
+            String(button.dataset.variant === selected.id),
+          ),
+        );
+        this.querySelectorAll<HTMLElement>("[data-region-scenario]").forEach(
+          (row) => {
+            const index = Number(row.dataset.regionScenario);
+            const before = model.values.Vanilla[index];
+            const after = model.values[selected.method][index];
+            const best = Math.min(
+              ...Object.values(model.values).map((scores) => scores[index]),
+            );
+            row.querySelector<HTMLElement>(
+              ".visual-region-before",
+            )!.textContent = `${before}% →`;
+            const value = row.querySelector<HTMLElement>(
+              ".visual-region-after",
+            )!;
+            value.textContent = `${after}%`;
+            value.classList.toggle("best-value", after === best);
+            row.querySelector<HTMLElement>(
+              ".visual-region-original-bar",
+            )!.style.width = `${before}%`;
+            row.querySelector<HTMLElement>(
+              ".visual-region-edited-bar",
+            )!.style.width = `${after}%`;
+          },
+        );
+        this.querySelectorAll<HTMLTableSectionElement>(
+          "[data-region-table-model]",
+        ).forEach((tbody) => {
+          tbody.hidden = tbody.dataset.regionTableModel !== model.id;
+        });
+        tableRegion.setAttribute(
+          "aria-label",
+          `Visual editing variants on ${model.name}`,
+        );
+      };
+      modelSelect.addEventListener("change", render, { signal });
+      buttons.forEach((button, index) => {
+        button.addEventListener(
+          "click",
+          () => {
+            selected = variants.find(
+              (item) => item.id === button.dataset.variant,
+            )!;
+            render();
+          },
+          { signal },
+        );
+        button.addEventListener(
+          "keydown",
+          (event) => {
+            const offset =
+              event.key === "ArrowRight"
+                ? 1
+                : event.key === "ArrowLeft"
+                  ? -1
+                  : 0;
+            const next =
+              event.key === "Home"
+                ? buttons[0]
+                : event.key === "End"
+                  ? buttons[buttons.length - 1]
+                  : offset
+                    ? buttons[
+                        (index + offset + buttons.length) % buttons.length
+                      ]
+                    : null;
+            if (next) {
+              event.preventDefault();
+              next.click();
+              next.focus();
+            }
+          },
+          { signal },
+        );
+      });
+      this.cleanup = () => controller.abort();
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.();
+      this.cleanup = undefined;
+    }
+  }
+  if (!customElements.get("eva-region-results"))
+    customElements.define("eva-region-results", EVARegionResults);
+</script>

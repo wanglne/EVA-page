@@ -1,0 +1,208 @@
+---
+import ablations from "../data/ablations.json";
+
+const models = ablations.efficiency;
+type Metric = "training" | "inference" | "asr";
+const metrics: { id: Metric; title: string; note: string }[] = [
+  {
+    id: "training",
+    title: "Training time",
+    note: 'Training time from Table 9. "—" indicates no training is required. Lower is better.',
+  },
+  {
+    id: "inference",
+    title: "Inference cost",
+    note: "Relative inference cost from Table 9, normalized to the corresponding original model (1×). Lower is better.",
+  },
+  {
+    id: "asr",
+    title: "Average ASR",
+    note: "Average attack success rate (ASR, %) from Table 9. Lower is better.",
+  },
+];
+const bestFor = (rows: (typeof models)[number]["rows"], metric: Metric) =>
+  Math.min(
+    ...rows
+      .map((row) => row[metric])
+      .filter((value): value is number => value !== null),
+  );
+const formatValue = (value: number | null, metric: Metric) => {
+  if (value === null) return "—";
+  if (metric === "training") return `${value.toFixed(1)} h`;
+  if (metric === "inference") return `${value}×`;
+  return `${value.toFixed(1)}%`;
+};
+const summaries = Object.fromEntries(
+  models.map((model) => {
+    const eva = model.rows.find((row) => row.method.startsWith("EVA"))!;
+    return [
+      model.id,
+      Object.fromEntries(
+        metrics.map((metric) => [
+          metric.id,
+          {
+            value: formatValue(eva[metric.id], metric.id),
+            description: model.descriptions[metric.id],
+          },
+        ]),
+      ),
+    ];
+  }),
+);
+const initialSummary = summaries[models[0].id][metrics[0].id];
+---
+
+<eva-efficiency-results
+  id="efficiency"
+  class="editing-efficiency-panel not-prose"
+  data-metrics={JSON.stringify(metrics)}
+  data-summaries={JSON.stringify(summaries)}
+>
+  <div class="ablation-panel-header">
+    <h4 class="efficiency-chart-title">{metrics[0].title} ↓</h4>
+    <div class="editing-efficiency-controls">
+      <label for="efficiency-model">
+        Model
+        <select id="efficiency-model">
+          {
+            models.map((model) => (
+              <option value={model.id}>
+                {model.family} · {model.name}
+              </option>
+            ))
+          }
+        </select>
+      </label>
+      <label for="efficiency-metric">
+        Metric
+        <select id="efficiency-metric">
+          {
+            metrics.map((metric) => (
+              <option value={metric.id}>{metric.title}</option>
+            ))
+          }
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="editing-efficiency-body">
+    <div class="editing-efficiency-copy" aria-live="polite" aria-atomic="true">
+      <p class="editing-efficiency-number">{initialSummary.value}</p>
+      <p class="editing-efficiency-description">{initialSummary.description}</p>
+      <p class="editing-efficiency-source">
+        Single NVIDIA A40 GPU · Averaged over five runs.
+      </p>
+    </div>
+    <div class="editing-efficiency-bars" aria-live="polite" aria-atomic="true">
+      {
+        models.flatMap((model, modelIndex) =>
+          metrics.map((metric, metricIndex) => {
+            const max = Math.max(
+              ...model.rows.map((row) => row[metric.id] ?? 0),
+            );
+            const best = bestFor(model.rows, metric.id);
+            return (
+              <div
+                data-efficiency-model={model.id}
+                data-efficiency-metric={metric.id}
+                role="group"
+                aria-label={`${model.family} · ${model.name}: ${metric.title}`}
+                hidden={modelIndex !== 0 || metricIndex !== 0}
+              >
+                {model.rows.map((row) => (
+                  <div
+                    class:list={{
+                      "efficiency-cost-row": true,
+                      "efficiency-eva-cost": row.method.startsWith("EVA"),
+                    }}
+                  >
+                    <div class="efficiency-cost-heading">
+                      <span>{row.method}</span>
+                      <span
+                        class:list={{
+                          "efficiency-cost-value": true,
+                          "best-value": row[metric.id] === best,
+                        }}
+                      >
+                        {formatValue(row[metric.id], metric.id)}
+                      </span>
+                    </div>
+                    <div class="efficiency-cost-track" aria-hidden="true">
+                      <span
+                        style={`width: ${((row[metric.id] ?? 0) / max) * 100}%;`}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            );
+          }),
+        )
+      }
+    </div>
+  </div>
+  <p class="table-note editing-efficiency-note">
+    {metrics[0].note}
+  </p>
+</eva-efficiency-results>
+
+<script>
+  class EVAEfficiencyResults extends HTMLElement {
+    private cleanup?: () => void;
+
+    connectedCallback() {
+      if (this.cleanup) return;
+      const modelSelect =
+        this.querySelector<HTMLSelectElement>("#efficiency-model")!;
+      const metricSelect =
+        this.querySelector<HTMLSelectElement>("#efficiency-metric")!;
+      const metrics: { id: string; title: string; note: string }[] = JSON.parse(
+        this.dataset.metrics!,
+      );
+      const summaries: Record<
+        string,
+        Record<string, { value: string; description: string }>
+      > = JSON.parse(this.dataset.summaries!);
+      const title = this.querySelector<HTMLElement>(".efficiency-chart-title")!;
+      const note = this.querySelector<HTMLElement>(".editing-efficiency-note")!;
+      const number = this.querySelector<HTMLElement>(
+        ".editing-efficiency-number",
+      )!;
+      const description = this.querySelector<HTMLElement>(
+        ".editing-efficiency-description",
+      )!;
+      const controller = new AbortController();
+      const render = () => {
+        const metric = metrics.find((item) => item.id === metricSelect.value)!;
+        title.textContent = `${metric.title} ↓`;
+        note.textContent = metric.note;
+        const summary = summaries[modelSelect.value][metric.id];
+        number.textContent = summary.value;
+        description.textContent = summary.description;
+        this.querySelectorAll<HTMLElement>("[data-efficiency-model]").forEach(
+          (panel) => {
+            panel.hidden =
+              panel.dataset.efficiencyModel !== modelSelect.value ||
+              panel.dataset.efficiencyMetric !== metricSelect.value;
+          },
+        );
+      };
+      modelSelect.addEventListener("change", render, {
+        signal: controller.signal,
+      });
+      metricSelect.addEventListener("change", render, {
+        signal: controller.signal,
+      });
+      render();
+      this.cleanup = () => controller.abort();
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.();
+      this.cleanup = undefined;
+    }
+  }
+  if (!customElements.get("eva-efficiency-results")) {
+    customElements.define("eva-efficiency-results", EVAEfficiencyResults);
+  }
+</script>

@@ -122,7 +122,7 @@ main > section > p,
   font-family: var(--page-display), serif;
   font-weight: 800;
   margin-bottom: 0;
-  padding-block: 3rem;
+  padding-block: 3rem 0.8cm;
 }
 .header-inner {
   max-width: 72rem;

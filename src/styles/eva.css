@@ -150,11 +150,15 @@ main > section > p,
   flex-shrink: 0;
 }
 .masthead-logo {
+  --masthead-logo-width: min(8.859375rem, calc((100vw - 3.75rem) * 0.28125));
   display: block;
-  width: min(8.859375rem, calc((100vw - 3.75rem) * 0.28125));
+  width: var(--masthead-logo-width);
   height: auto;
   flex-shrink: 0;
-  margin-top: calc(var(--masthead-size) * 0.121);
+  /* Align the ASPIRE letter tops with E, accounting for the logo's upper artwork. */
+  margin-top: calc(
+    var(--masthead-size) * 0.129 - var(--masthead-logo-width) * 0.07582
+  );
 }
 .publication-header h1 {
   margin: 0;

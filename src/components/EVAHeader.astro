@@ -24,13 +24,18 @@ const institutions = [
   <div class="header-inner">
     <div class="publication-masthead">
       <div class="publication-branding">
-        <img
-          class="masthead-logo"
-          src={`${base}/aspire-red-stamp.svg`}
-          alt="ASPIRE — AI Security, Privacy and Robustness"
-          width="1886"
-          height="834"
-        />
+        <picture class="masthead-logo">
+          <source
+            media="(max-width: 767px)"
+            srcset={`${base}/aspire-red-mobile.svg`}
+          />
+          <img
+            src={`${base}/aspire-red-stamp.svg`}
+            alt="ASPIRE — AI Security, Privacy and Robustness"
+            width="1886"
+            height="834"
+          />
+        </picture>
         <h1><code>EVA</code></h1>
       </div>
       <p class="publication-title">

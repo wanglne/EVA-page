@@ -7,6 +7,7 @@ interface Props {
 const { name, alt } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const src = `${base}/figures/eva-${name}.svg`;
+const mobileSrc = `${base}/figures/eva-${name}-mobile.svg`;
 const { width, height, title, fullTitle, fullDescription, steps } =
   figures[name];
 ---
@@ -25,15 +26,18 @@ const { width, height, title, fullTitle, fullDescription, steps } =
       >
     </div>
     <div class="figure-stage">
-      <img
-        class="figure-fallback"
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading="lazy"
-        decoding="async"
-      />
+      <picture>
+        <source media="(max-width: 767px)" srcset={mobileSrc} />
+        <img
+          class="figure-fallback"
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <svg
         class="figure-viewport"
         viewBox={`0 0 ${width} ${height}`}
@@ -49,7 +53,14 @@ const { width, height, title, fullTitle, fullDescription, steps } =
           </clipPath>
         </defs>
         <g clip-path={`url(#figure-clip-${name})`}>
-          <image href={src} width={width} height={height} />
+          <image
+            class="figure-artwork"
+            href={src}
+            data-desktop-src={src}
+            data-mobile-src={mobileSrc}
+            width={width}
+            height={height}
+          />
           <g class="figure-masks" aria-hidden="true" pointer-events="none"></g>
           <rect
             class="figure-focus"
@@ -118,6 +129,7 @@ const { width, height, title, fullTitle, fullDescription, steps } =
     connectedCallback() {
       if (this.cleanup) return;
       const svg = this.querySelector<SVGSVGElement>(".figure-viewport")!;
+      const artwork = this.querySelector<SVGImageElement>(".figure-artwork")!;
       const focus = this.querySelector<SVGRectElement>(".figure-focus")!;
       const masks = this.querySelector<SVGGElement>(".figure-masks")!;
       const clip = this.querySelector<SVGRectElement>(".figure-clip")!;
@@ -132,8 +144,18 @@ const { width, height, title, fullTitle, fullDescription, steps } =
       const paragraph = narrative.querySelector("p")!;
       const fullBox = this.dataset.fullBox!.split(" ").map(Number);
       const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const mobile = window.matchMedia("(max-width: 767px)");
       const controller = new AbortController();
       const { signal } = controller;
+      const updateArtwork = () => {
+        const src = mobile.matches
+          ? artwork.dataset.mobileSrc!
+          : artwork.dataset.desktopSrc!;
+        if (artwork.getAttribute("href") !== src)
+          artwork.setAttribute("href", src);
+      };
+      updateArtwork();
+      mobile.addEventListener("change", updateArtwork, { signal });
       let currentBox = [...fullBox];
       let index = -1;
       let playing = false;

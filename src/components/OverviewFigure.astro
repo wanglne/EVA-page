@@ -10,12 +10,18 @@ const { width, height } = figures.intro;
   <div class="overview-figure-toolbar">
     <h3 id="overview-figure-title">EVA in the Model Lifecycle</h3>
   </div>
-  <img
-    src={src}
-    alt="EVA in the model lifecycle: a model released after foundational alignment is vulnerable to a jailbreak, and localized safety editing changes its harmful response into refusal during downstream adaptation."
-    width={width}
-    height={height}
-    loading="lazy"
-    decoding="async"
-  />
+  <picture>
+    <source
+      media="(max-width: 767px)"
+      srcset={`${base}/figures/eva-intro-mobile.svg`}
+    />
+    <img
+      src={src}
+      alt="EVA in the model lifecycle: a model released after foundational alignment is vulnerable to a jailbreak, and localized safety editing changes its harmful response into refusal during downstream adaptation."
+      width={width}
+      height={height}
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
 </figure>

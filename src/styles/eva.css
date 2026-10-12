@@ -160,6 +160,11 @@ main > section > p,
     var(--masthead-size) * 0.129 - var(--masthead-logo-width) * 0.07582
   );
 }
+.masthead-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .publication-header h1 {
   margin: 0;
   /* Use the compressed Matisse glyph width so the whole masthead centers on the visible letters. */
@@ -1590,8 +1595,35 @@ main .visual-token-baseline {
   }
 }
 @media (max-width: 767px) {
+  .publication-header h1,
+  .publication-title,
+  .conference-label,
+  .authors,
+  .affiliation,
+  .other-affiliations,
+  .author-notes {
+    filter: none;
+    text-shadow: none;
+  }
+  .publication-header h1,
+  .publication-title,
+  .conference-label {
+    text-shadow: 0 0 0.06em rgb(220 235 211 / 24%);
+  }
   .publication-links a {
     padding-inline: 0.875rem;
+  }
+  .impact-value-column {
+    width: 4rem;
+  }
+  .impact-metric-pair {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+  .impact-metric-pair > span {
+    min-width: 0;
+    white-space: nowrap;
   }
   .section-nav-inner {
     gap: 0.25rem;

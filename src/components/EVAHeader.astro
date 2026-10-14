@@ -23,21 +23,7 @@ const institutions = [
 <header class="publication-header full-bleed">
   <div class="header-inner">
     <div class="publication-masthead">
-      <div class="publication-branding">
-        <picture class="masthead-logo">
-          <source
-            media="(max-width: 767px)"
-            srcset={`${base}/aspire-red-mobile.svg`}
-          />
-          <img
-            src={`${base}/aspire-red-stamp.svg`}
-            alt="ASPIRE — AI Security, Privacy and Robustness"
-            width="1886"
-            height="834"
-          />
-        </picture>
-        <h1><code>EVA</code></h1>
-      </div>
+      <h1><code>EVA</code></h1>
       <p class="publication-title">
         Editing for Versatile Alignment<br class="publication-title-break" />
         {" "}against Jailbreaks
@@ -59,15 +45,20 @@ const institutions = [
       }
     </div>
     <div class="affiliation-row">
-      <p class="affiliation"><sup>1</sup>ShanghaiTech University, ASPIRE Lab</p>
+      <p class="affiliation"><sup>1</sup>ShanghaiTech University</p>
+      <img
+        class="affiliation-logo"
+        src={`${base}/aspire-transparent.png`}
+        alt="ASPIRE — AI Security, Privacy and Robustness"
+        width="1895"
+        height="830"
+      />
     </div>
     <div class="other-affiliations">
       {
+        // prettier-ignore
         institutions.map((institution, i) => (
-          <span>
-            <sup>{i + 2}</sup>
-            {institution}
-          </span>
+          <span><sup>{i + 2}</sup>{institution}</span>
         ))
       }
     </div>

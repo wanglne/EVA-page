@@ -44,7 +44,7 @@ export default defineConfig({
             { settings: { foreground: "#171719" } },
             {
               scope: ["keyword", "storage", "entity.name", "support.type"],
-              settings: { foreground: "#b7192c" },
+              settings: { foreground: "#745694" },
             },
             {
               scope: ["comment", "punctuation"],

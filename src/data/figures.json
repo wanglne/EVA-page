@@ -36,7 +36,7 @@
     "width": 517,
     "height": 164,
     "title": "Walk through EVA",
-    "fullTitle": "From Harmful Keys to Safe Values",
+    "fullTitle": "From harmful keys to safe values",
     "fullDescription": "EVA identifies harmful textual and visual key representations, optimizes target values that favor safe refusals, and writes the new mappings into selected MLP down-projection weights.",
     "steps": [
       {

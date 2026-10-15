@@ -62,7 +62,7 @@ import Wide from "./components/Wide.astro";
   </div>
   <OverviewFigure />
   <div className="overview-rationale">
-    <h3>Why Use Targeted Model Editing After Release?</h3>
+    <h3>Why use targeted model editing after release?</h3>
     <p>A released model can encounter jailbreaks that its initial safety alignment did not anticipate. Broad safety fine-tuning can alter useful capabilities, while external defenses add components to the inference pipeline. EVA instead uses localized parameter edits to modify the model's response to harmful concepts without adding inference-time defense components.</p>
   </div>
 </Wide>
@@ -75,7 +75,7 @@ import Wide from "./components/Wide.astro";
   <div className="methodology-content">
     <div className="methodology-heading">
       <h2 id="methodology-title">Methodology</h2>
-      <h3>How Does EVA Edit a Model?</h3>
+      <h3>How does EVA edit a model?</h3>
     </div>
     <PaperFigure name="method" alt="EVA editing pipeline: extract harmful text tokens, generate query variations, select related image tokens through attention, aggregate representative keys, optimize safe values, and update MLP down-projection weights." />
     <p>Together, these steps incorporate targeted safety corrections directly into the model weights. Once editing is complete, the updated model can be deployed without an additional inference-time defense module.</p>
@@ -91,13 +91,13 @@ import Wide from "./components/Wide.astro";
 
 <h2 id="results-title">Results</h2>
 
-### How Does EVA Balance Safety and Utility?
+### How does EVA balance safety and utility?
 
 <Results />
 
 Across five LLMs and three VLMs, EVA substantially reduces jailbreak ASR under diverse textual and visual attacks while retaining most general task utility.
 
-### How Does Visual Token Selection Affect Robustness?
+### How does visual token selection affect robustness?
 
 We compare edits built from scene content, OCR text, and composite inputs. Select a variant to inspect its permitted visual token region and measured attack success.
 
@@ -107,7 +107,7 @@ We compare edits built from scene content, OCR text, and composite inputs. Selec
 
 <SupportingResults />
 
-### Editing Cost and Deployment
+### Editing cost and deployment
 
 <EditingEfficiency />
 

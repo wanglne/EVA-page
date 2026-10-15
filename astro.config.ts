@@ -34,25 +34,6 @@ export default defineConfig({
     icon(),
     astroExpressiveCode({
       defaultProps: { wrap: true },
-      themes: [
-        {
-          name: "eva-unit02",
-          type: "light",
-          fg: "#171719",
-          bg: "#efedeb",
-          settings: [
-            { settings: { foreground: "#171719" } },
-            {
-              scope: ["keyword", "storage", "entity.name", "support.type"],
-              settings: { foreground: "#745694" },
-            },
-            {
-              scope: ["comment", "punctuation"],
-              settings: { foreground: "#666160" },
-            },
-          ],
-        },
-      ],
       styleOverrides: {
         codeFontSize: "1rem",
         codeLineHeight: "1.5",

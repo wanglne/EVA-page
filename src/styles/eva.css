@@ -1472,6 +1472,12 @@ main .visual-token-baseline {
   line-height: 1.5;
   color: var(--page-muted);
 }
+#citation {
+  --page-text: #18181b;
+  --page-link: #3b82f6;
+  --page-link-hover: #1d4ed8;
+  color: var(--page-text);
+}
 #citation .expressive-code {
   margin-top: 1rem;
 }
